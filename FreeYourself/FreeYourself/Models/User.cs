@@ -12,10 +12,16 @@ namespace FreeYourself.Models
 
         public string username { get; set; }
 
-        public string teamStatus { get; set; }
+        //if team leader or not, not needed because Team has an admin User
+        //public string teamStatus { get; set; }
 
         public string teamName { get; set; }
 
-        public int xp { get; set; }
+        // total xp from the begining
+        public int combinedDailyXp { get; set; }
+
+        public int totalXp {get; set; }
+
+        public int comboDays{ get; set; }
     }
 }

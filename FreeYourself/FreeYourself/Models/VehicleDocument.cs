@@ -8,9 +8,11 @@ namespace FreeYourself.Models
     public class VehicleDocument
     {
         public int Id { get; set; }
+
         public int serialNumber { get; set; }
 
-        public User owner { get; set; }
+        public Vehicle vehicle { get; set; }
+
 
     }
 }

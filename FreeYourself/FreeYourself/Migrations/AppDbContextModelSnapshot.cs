@@ -49,21 +49,61 @@ namespace FreeYourself.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("combinedDailyXp")
+                        .HasColumnType("int");
+
+                    b.Property<int>("comboDays")
+                        .HasColumnType("int");
+
                     b.Property<string>("teamName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("teamStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("totalXp")
+                        .HasColumnType("int");
 
                     b.Property<string>("username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("xp")
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FreeYourself.Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("TotalXp")
                         .HasColumnType("int");
+
+                    b.Property<int>("currentDayXp")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ownerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("registrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("teamName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("vehicleType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("ownerId");
+
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("FreeYourself.Models.VehicleDocument", b =>
@@ -73,15 +113,15 @@ namespace FreeYourself.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ownerId")
+                    b.Property<int>("serialNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("serialNumber")
+                    b.Property<int?>("vehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ownerId");
+                    b.HasIndex("vehicleId");
 
                     b.ToTable("VehicleDocuments");
                 });
@@ -93,13 +133,7 @@ namespace FreeYourself.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("dailyKm")
-                        .HasColumnType("int");
-
                     b.Property<int>("difficultyLevel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numberOfConsecutiveDays")
                         .HasColumnType("int");
 
                     b.Property<int?>("participantId")
@@ -122,11 +156,25 @@ namespace FreeYourself.Migrations
                         .HasForeignKey("adminId");
                 });
 
-            modelBuilder.Entity("FreeYourself.Models.VehicleDocument", b =>
+            modelBuilder.Entity("FreeYourself.Models.User", b =>
+                {
+                    b.HasOne("FreeYourself.Models.Team", null)
+                        .WithMany("users")
+                        .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("FreeYourself.Models.Vehicle", b =>
                 {
                     b.HasOne("FreeYourself.Models.User", "owner")
                         .WithMany()
                         .HasForeignKey("ownerId");
+                });
+
+            modelBuilder.Entity("FreeYourself.Models.VehicleDocument", b =>
+                {
+                    b.HasOne("FreeYourself.Models.Vehicle", "vehicle")
+                        .WithMany()
+                        .HasForeignKey("vehicleId");
                 });
 
             modelBuilder.Entity("FreeYourself.Models.Workout", b =>

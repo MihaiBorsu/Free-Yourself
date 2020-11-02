@@ -15,6 +15,7 @@ namespace FreeYourself.DataAccessLayer
 
         public DbSet<Team> Teams { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleDocument> VehicleDocuments { get; set; }
         public DbSet<Workout> Workouts { get; set; }
 
