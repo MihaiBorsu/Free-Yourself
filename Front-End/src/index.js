@@ -2,17 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2FsdGVycnJ3IiwiYSI6ImNrZ3pmYnV6bzBtczEzMHF2dGdzN3B1cmsifQ.74FBdlC-WfNhXcQTsNzx5Q';
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2FsdGVycnJ3IiwiYSI6ImNrZ3pmNmpudzEzYWUydG9lcjE3aG5kajQifQ.NRU8YKz5OEJHRoups2j4aA';
 
 class Application extends React.Component {
     // Code from the next few steps will go here
-
     constructor(props) {
         super(props);
         this.state = {
-          lng: 5,
-          lat: 34,
-          zoom: 2
+          lng: 21.3036,
+          lat: 46.1927,
+          zoom: 18.00
         };
       }
 
@@ -23,6 +22,7 @@ class Application extends React.Component {
           center: [this.state.lng, this.state.lat],
           zoom: this.state.zoom
         });
+
         map.on('move', () => {
             this.setState({
               lng: map.getCenter().lng.toFixed(4),
@@ -30,6 +30,7 @@ class Application extends React.Component {
               zoom: map.getZoom().toFixed(2)
             });
           });
+
       }
 
       render() {
@@ -42,6 +43,8 @@ class Application extends React.Component {
           </div>
         )
       }
+
+
   }
   
   ReactDOM.render(<Application />, document.getElementById('app'));
