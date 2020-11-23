@@ -1,0 +1,12 @@
+debug|2020-11-23 16:03:41.4150:
+ caller:    ASPNETCore.Program.Main
+ message:   init main
+ exception: 
+debug|2020-11-23 16:03:41.4919:
+ caller:    ASPNETCore.Program.Main
+ message:   path to appsetting.json file set to: C:\Users\borsu\Documents\school\msa\tutorial\ASP.NET-Core\bin\Debug\netcoreapp3.1
+ exception: 
+debug|2020-11-23 16:03:41.4919:
+ caller:    ASPNETCore.Program.Main
+ message:   Starting app
+ exception: 

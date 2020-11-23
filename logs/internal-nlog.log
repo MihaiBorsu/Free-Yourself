@@ -1,0 +1,23 @@
+2020-11-22 23:19:38.7681 Info Message Template Auto Format enabled
+2020-11-22 23:19:38.7890 Info Loading assembly: NLog.Web.AspNetCore
+2020-11-22 23:19:38.9538 Info Adding target ColoredConsoleTarget(Name=console)
+2020-11-22 23:19:38.9814 Info Adding target FileTarget(Name=ASPNETCoreFile)
+2020-11-22 23:19:39.1636 Info Found 52 configuration items
+2020-11-22 23:20:18.6886 Info Shutdown() called. Logger closing...
+2020-11-22 23:20:18.6886 Info Closing old configuration.
+2020-11-22 23:20:18.7117 Info Logger has been closed down.
+2020-11-22 23:20:59.2525 Info Message Template Auto Format enabled
+2020-11-22 23:20:59.2946 Info Loading assembly: NLog.Web.AspNetCore
+2020-11-22 23:20:59.4519 Info Adding target ColoredConsoleTarget(Name=console)
+2020-11-22 23:20:59.4842 Info Adding target FileTarget(Name=ASPNETCoreFile)
+2020-11-22 23:20:59.6455 Info Found 52 configuration items
+2020-11-22 23:21:12.3829 Info Message Template Auto Format enabled
+2020-11-22 23:21:12.4011 Info Loading assembly: NLog.Web.AspNetCore
+2020-11-22 23:21:12.5027 Info Adding target ColoredConsoleTarget(Name=console)
+2020-11-22 23:21:12.5289 Info Adding target FileTarget(Name=ASPNETCoreFile)
+2020-11-22 23:21:12.6429 Info Found 52 configuration items
+2020-11-23 16:03:39.8572 Info Message Template Auto Format enabled
+2020-11-23 16:03:39.8813 Info Loading assembly: NLog.Web.AspNetCore
+2020-11-23 16:03:40.0084 Info Adding target ColoredConsoleTarget(Name=console)
+2020-11-23 16:03:40.0372 Info Adding target FileTarget(Name=ASPNETCoreFile)
+2020-11-23 16:03:40.2286 Info Found 52 configuration items

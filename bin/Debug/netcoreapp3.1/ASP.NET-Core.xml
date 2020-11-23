@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ASP.NET-Core</name>
+    </assembly>
+    <members>
+        <member name="T:ASPNETCore.Configuration.ConfigurationKeys">
+            <summary>
+            Configuration Keys section
+            </summary>
+        </member>
+        <member name="F:ASPNETCore.Configuration.ConfigurationKeys.Jwt">
+            <summary>
+            JWt section key
+            </summary>
+        </member>
+        <member name="T:ASPNETCore.Configuration.IAppSettingConfiguration">
+            <summary>
+            used to restrict <seealso cref="M:ASPNETCore.MethodExtensions.IConfigurationExtensions.Get``1(Microsoft.Extensions.Configuration.IConfiguration,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:ASPNETCore.Configuration.JwtConfiguration">
+            <summary>
+            Wrapper for Jwt section from configuration file.
+            Used as <seealso cref="T:Microsoft.Extensions.Options.IOptionsMonitor`1"/>
+            </summary>
+        </member>
+        <member name="P:ASPNETCore.Configuration.JwtConfiguration.Key">
+            <summary>
+            Jwt Key. Used to create <seealso cref="T:Microsoft.IdentityModel.Tokens.SymmetricSecurityKey"/> 
+            </summary>
+        </member>
+        <member name="P:ASPNETCore.Configuration.JwtConfiguration.Issuer">
+            <summary>
+            Jwt Issuer. Used to create <seealso cref="T:System.IdentityModel.Tokens.Jwt.JwtSecurityToken"/> 
+            </summary>
+        </member>
+        <member name="T:ASPNETCore.Controllers.LoginController">
+            <summary>
+            login controller
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Controllers.LoginController.#ctor(ASPNETCore.Services.ILoginService)">
+            <summary>
+            ctor
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:ASPNETCore.Controllers.LoginController.Login(ASPNETCore.Dto.UserLogin)">
+            <summary>
+            login: validate user credentials and generate JWT auth token.
+            AllowAnonymous
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Controllers.TestController">
+            <summary>
+            test controller, used to check JWT validity
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Controllers.TestController.#ctor(System.Security.Principal.IPrincipal)">
+            <summary>
+            ctor
+            </summary>
+            <param name="principal"></param>
+        </member>
+        <member name="M:ASPNETCore.Controllers.TestController.TestToken">
+            <summary>
+            TestToken
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Dto.UserLogin">
+            <summary>
+            simple user DTO
+            </summary>
+        </member>
+        <member name="P:ASPNETCore.Dto.UserLogin.UserName">
+            <summary>
+            username
+            </summary>
+        </member>
+        <member name="P:ASPNETCore.Dto.UserLogin.Password">
+            <summary>
+            password
+            </summary>
+        </member>
+        <member name="T:ASPNETCore.MethodExtensions.IConfigurationExtensions">
+            <summary>
+            IConfiguration method Extensions
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.MethodExtensions.IConfigurationExtensions.Get``1(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Get a configuration
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="self"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.MethodExtensions.IEnumeratorExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.MethodExtensions.IEnumeratorExtensions.ToIEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>
+            ToIEnumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="self"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Program">
+            <summary>
+            Entry point
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Program.Main(System.String[])">
+            <summary>
+            entry mehod
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ASPNETCore.Program.BuildHost(System.String[],System.String)">
+            <summary>
+            create host CreateHostBuilder
+            </summary>
+            <param name="args"></param>
+            <param name="contentRoot"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.RegisterJWT">
+            <summary>
+            used to add JWT to project
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.RegisterJWT.ConfigureJWTService(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure JWT. use in <seealso cref="M:ASPNETCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/>
+            </summary>
+            <param name="self"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ASPNETCore.RegisterJWT.ConfigureJWT(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configure JWT. use in <seealso cref="M:ASPNETCore.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)"/>
+            </summary>
+            <param name="self"></param>
+        </member>
+        <member name="T:ASPNETCore.RegisterSwagger">
+            <summary>
+            used to add Swagger to project
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.RegisterSwagger.ConfigureSwaggerService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure JWT. use in <seealso cref="M:ASPNETCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/>
+            </summary>
+            <param name="self"></param>
+        </member>
+        <member name="M:ASPNETCore.RegisterSwagger.ConfigureSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Configure Swagger. use in <seealso cref="M:ASPNETCore.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)"/>
+            </summary>
+            <param name="self"></param>
+        </member>
+        <member name="T:ASPNETCore.ServiceActivator">
+            <summary>
+            Add static service resolver to use when dependencies injection is not available
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.ServiceActivator.Configure(System.IServiceProvider)">
+            <summary>
+            Configure ServiceActivator with full serviceProvider
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:ASPNETCore.ServiceActivator.GetScope(System.IServiceProvider)">
+            <summary>
+            Create a scope where use this ServiceActivator
+            </summary>
+            <param name="serviceProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Services.ILoginService">
+            <summary>
+            Interface used to login to application
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Services.ILoginService.Authenticate(ASPNETCore.Dto.UserLogin)">
+            <summary>
+            determiante if a user is allowed to login
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASPNETCore.Services.ILoginService.GenerateJWT(ASPNETCore.Dto.UserLogin)">
+            <summary>
+            Generate JWT auth token
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Services.LoginService">
+            <summary>
+            Implements ILoginService
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Services.LoginService.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{ASPNETCore.Services.LoginService},Microsoft.Extensions.Options.IOptionsMonitor{ASPNETCore.Configuration.JwtConfiguration})">
+            <summary>
+            ctor
+            </summary>
+            <param name="config"></param>
+            <param name="logger"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:ASPNETCore.Services.LoginService.Authenticate(ASPNETCore.Dto.UserLogin)">
+            <summary>
+            Mocked autentication service
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASPNETCore.Services.LoginService.GenerateJWT(ASPNETCore.Dto.UserLogin)">
+            <summary>
+            generate a basic JWT token
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ASPNETCore.Services.Register">
+            <summary>
+            Used to register to startup all services
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Services.Register.ConfigureAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            used in <seealso cref="M:ASPNETCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)"/>
+            </summary>
+            <param name="self"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:ASPNETCore.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="F:ASPNETCore.Startup._configuration">
+            <summary>
+            IConfiguration
+            </summary>
+        </member>
+        <member name="M:ASPNETCore.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            ctor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ASPNETCore.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container. 
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ASPNETCore.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
