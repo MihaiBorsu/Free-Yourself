@@ -22,6 +22,8 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { StolenVehiclesComponent } from './stolen-vehicles/stolen-vehicles.component';
+import { GuildComponent } from './guild/guild.component';
 
 @NgModule({
   imports: [
@@ -39,6 +41,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    StolenVehiclesComponent,
+    GuildComponent,
 
   ],
   providers: [],
