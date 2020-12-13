@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UploadImageService } from '../services/upload-image.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  imageUrl: string = "/assets/img/angular.png";
+  fileToUpload: File = null;
+
+  constructor(private imageService : UploadImageService) { }
 
   ngOnInit() {
   }
 
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  OnSubmit(Caption,Image){
+    console.log(Caption.value)
+    console.log(this.fileToUpload)
+   this.imageService.postFile(Caption.value,this.fileToUpload).subscribe(
+     data =>{
+       console.log('done');
+       Caption.value = null;
+       Image.value = null;
+       this.imageUrl = "/assets/img/default-image.png";
+     }
+   );
+  }
 }
