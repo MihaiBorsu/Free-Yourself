@@ -7,9 +7,9 @@
                       <div class="card-icon">
                           <i class="material-icons">content_copy</i>
                       </div>
-                      <p class="card-category">Bike</p>
-                      <h3 class="card-title">234
-                          <small>KM</small>
+                      <p class="card-category">Daily Distance</p>
+                      <h3 class="card-title">14
+                          <small>XP</small>
                       </h3>
                   </div>
                   <div class="card-footer">
@@ -26,8 +26,10 @@
                       <div class="card-icon">
                           <i class="material-icons">store</i>
                       </div>
-                      <p class="card-category">Skateboard</p>
-                      <h3 class="card-title">100 KM</h3>
+                      <p class="card-category">Weekly Distance</p>
+                      <h3 class="card-title">100 
+                        <small>XP</small>
+                      </h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -42,8 +44,10 @@
                       <div class="card-icon">
                           <i class="material-icons">info_outline</i>
                       </div>
-                      <p class="card-category">Rolls</p>
-                      <h3 class="card-title">75 KM</h3>
+                      <p class="card-category">Monthly Distance</p>
+                      <h3 class="card-title">310 
+                        <small>XP</small>
+                      </h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -56,10 +60,12 @@
               <div class="card card-stats">
                   <div class="card-header card-header-info card-header-icon">
                       <div class="card-icon">
-                          <i class="fa fa-twitter"></i>
+                        <i class="material-icons">store</i>
                       </div>
-                      <p class="card-category">Followers</p>
-                      <h3 class="card-title">+245</h3>
+                      <p class="card-category">Yearly Distance</p>
+                      <h3 class="card-title">1000 
+                        <small>XP</small>
+                      </h3>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
@@ -72,7 +78,7 @@
       <div class="row">
         <div class="col-md-4">
             <div class="card card-chart">
-                <div class="card-header card-header-danger">
+                <div class="card-header card-header-warning">
                     <div class="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div class="card-body">
@@ -105,7 +111,7 @@
           </div>
           <div class="col-md-4">
               <div class="card card-chart">
-                  <div class="card-header card-header-warning">
+                <div class="card-header card-header-danger">
                       <div class="ct-chart" id="websiteViewsChart"></div>
                   </div>
                   <div class="card-body">
@@ -121,8 +127,8 @@
           </div>
       </div>
       <div class="row">
-          <div class="col-lg-6 col-md-12">
-              <div class="card">
+          <!-- <div class="col-lg-6 col-md-12"> -->
+              <!-- <div class="card">
                   <div class="card-header card-header-tabs card-header-primary">
                       <div class="nav-tabs-navigation">
                           <div class="nav-tabs-wrapper">
@@ -153,95 +159,7 @@
                   <div class="card-body">
                       <div class="tab-content">
                           <div class="tab-pane active" id="profile">
-                              <!-- <table class="table">
-                                  <tbody>
-                                      <tr>
-                                          <td>
-                                              <div class="form-check">
-                                                  <label class="form-check-label">
-                                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                                      <span class="form-check-sign">
-                                                          <span class="check"></span>
-                                                      </span>
-                                                  </label>
-                                              </div>
-                                          </td>
-                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                          <td class="td-actions text-right">
-                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">edit</i>
-                                              </button>
-                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">close</i>
-                                              </button>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                              <div class="form-check">
-                                                  <label class="form-check-label">
-                                                      <input class="form-check-input" type="checkbox" value="">
-                                                      <span class="form-check-sign">
-                                                          <span class="check"></span>
-                                                      </span>
-                                                  </label>
-                                              </div>
-                                          </td>
-                                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                          <td class="td-actions text-right">
-                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">edit</i>
-                                              </button>
-                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">close</i>
-                                              </button>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                              <div class="form-check">
-                                                  <label class="form-check-label">
-                                                      <input class="form-check-input" type="checkbox" value="">
-                                                      <span class="form-check-sign">
-                                                          <span class="check"></span>
-                                                      </span>
-                                                  </label>
-                                              </div>
-                                          </td>
-                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                          </td>
-                                          <td class="td-actions text-right">
-                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">edit</i>
-                                              </button>
-                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">close</i>
-                                              </button>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>
-                                              <div class="form-check">
-                                                  <label class="form-check-label">
-                                                      <input class="form-check-input" type="checkbox" value="" checked>
-                                                      <span class="form-check-sign">
-                                                          <span class="check"></span>
-                                                      </span>
-                                                  </label>
-                                              </div>
-                                          </td>
-                                          <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                          <td class="td-actions text-right">
-                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">edit</i>
-                                              </button>
-                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                  <i class="material-icons">close</i>
-                                              </button>
-                                          </td>
-                                      </tr>
-                                  </tbody>
-                              </table> -->
+                             
                           </div>
                           <div class="tab-pane" id="messages">
                               <table class="table">
@@ -365,45 +283,84 @@
                       </div>
                   </div>
               </div>
-          </div>
+          </div> -->
+          <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                    <h4 class="card-title">Today's Users ranking</h4>
+                    <p class="card-category">Ranking for (actual date)</p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Guild</th>
+                            <th>Xp</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Dakota Rice</td>
+                                <td>Black Hawks</td>
+                                <td>54</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Minerva Hooper</td>
+                                <td>Blue Curaçao</td>
+                                <td>49</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Sage Rodriguez</td>
+                                <td>Netherland's Magic Cakes</td>
+                                <td>32</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Philip Chaney</td>
+                                <td>Skigi Ninja</td>
+                                <td>21</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
           <div class="col-lg-6 col-md-12">
               <div class="card">
                   <div class="card-header card-header-success">
-                      <h4 class="card-title">Employees Stats</h4>
-                      <p class="card-category">New employees on 15th September, 2016</p>
+                      <h4 class="card-title">Guild members stats for Today</h4>
+                      <p class="card-category">Ranking for (actual date)</p>
                   </div>
                   <div class="card-body table-responsive">
                       <table class="table table-hover">
                           <thead class="text-warning">
                               <th>ID</th>
-                              <th>Name</th>
-                              <th>Salary</th>
-                              <th>Country</th>
+                              <th>Username</th>
+                              <th>Xp</th>
                           </thead>
                           <tbody>
                               <tr>
                                   <td>1</td>
                                   <td>Dakota Rice</td>
-                                  <td>$36,738</td>
-                                  <td>Niger</td>
+                                  <td>54</td>
                               </tr>
                               <tr>
                                   <td>2</td>
                                   <td>Minerva Hooper</td>
-                                  <td>$23,789</td>
-                                  <td>Curaçao</td>
+                                  <td>49</td>
                               </tr>
                               <tr>
                                   <td>3</td>
                                   <td>Sage Rodriguez</td>
-                                  <td>$56,142</td>
-                                  <td>Netherlands</td>
+                                  <td>32</td>
                               </tr>
                               <tr>
                                   <td>4</td>
                                   <td>Philip Chaney</td>
-                                  <td>$38,735</td>
-                                  <td>Korea, South</td>
+                                  <td>21</td>
                               </tr>
                           </tbody>
                       </table>
