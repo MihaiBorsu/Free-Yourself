@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FreeYourselfBack.Controllers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace FreeYourselfBack
 {
@@ -29,22 +30,25 @@ namespace FreeYourselfBack
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors();
+
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = "JwtBearer";
-                options.DefaultChallengeScheme = "JwtBearer";
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
             })
-            .AddJwtBearer("JwtBearer", jwtOptions => 
+            .AddJwtBearer(jwtOptions => 
             {
+                jwtOptions.RequireHttpsMetadata = false;
+                jwtOptions.SaveToken = true;
                 jwtOptions.TokenValidationParameters = new TokenValidationParameters()
                 {
                     IssuerSigningKey = TokenController.SIGNING_KEY,
                     ValidateIssuer = false,
                     ValidateAudience = false,
-                    ValidateIssuerSigningKey = false, //true
-                    ValidateLifetime = false, //true
-                    ClockSkew = TimeSpan.FromMinutes(5)
+                    ValidateIssuerSigningKey = true
                 };
             });
         }
@@ -61,14 +65,20 @@ namespace FreeYourselfBack
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.UseAuthentication();
         }
     }
 }
