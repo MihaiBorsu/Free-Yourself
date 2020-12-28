@@ -62,8 +62,13 @@ namespace WebApi.Controllers
             {
                 Id = user.Id,
                 Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                Email = user.Email,
+                Country = user.Country,
+                City = user.City,
+                PhoneNumber = user.PhoneNumber,
+                Description = user.Description,
+                // FirstName = user.FirstName,
+                // LastName = user.LastName,
                 Token = tokenString
             });
         }
@@ -113,7 +118,7 @@ namespace WebApi.Controllers
 
             try
             {
-                // update user 
+                // update user
                 _userService.Update(user, model.Password);
                 return Ok();
             }

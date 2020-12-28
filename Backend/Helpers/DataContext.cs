@@ -8,6 +8,10 @@ namespace WebApi.Helpers
     {
         protected readonly IConfiguration Configuration;
 
+        public DataContext()
+        {
+        }
+
         public DataContext(IConfiguration configuration)
         {
             Configuration = configuration;
