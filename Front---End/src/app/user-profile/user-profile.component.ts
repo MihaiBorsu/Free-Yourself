@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private imageService : UploadImageService) { }
 
   ngOnInit() {
-    showNotification('top','right', 'Are you good enough?')
+    showNotification('top','center', 'Are you good enough?')
   }
 
   handleFileInput(file: FileList) {

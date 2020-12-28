@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.auth.logedIn = true;
-        this.router.navigate(['/']);
+        localStorage.setItem('currentUser', 'Walter');
+        this.router.navigate(['/']);      
       }
     )
   }

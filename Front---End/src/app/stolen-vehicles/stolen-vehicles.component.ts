@@ -11,7 +11,7 @@ export class StolenVehiclesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    showNotification('top','right', 'Lets go hunting')
+    showNotification('top','center', 'Lets go hunting')
   }
 
 }

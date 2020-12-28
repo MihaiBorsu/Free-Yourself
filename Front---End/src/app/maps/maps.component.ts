@@ -24,7 +24,7 @@ export class MapsComponent implements OnInit {
     lng = -122.41;
     constructor() { }
     ngOnInit() {
-        showNotification('top','right', 'You cannot hide...')
+        showNotification('top','center', 'You cannot hide...')
 
         Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
 

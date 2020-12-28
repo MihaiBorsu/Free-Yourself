@@ -1,17 +1,19 @@
 declare var $: any;
 
 export function showNotification(from, align, text){
-    const type = ['','info','success','warning','danger'];
+    // const type = ['','info','success','warning','danger'];
 
-    const color = Math.floor((Math.random() * 4) + 1);
+    // const color = Math.floor((Math.random() * 4) + 1);
+
+    const color = 'info'
 
     $.notify({
         icon: "notifications",
         message: text
 
     },{
-        type: type[color],
-        timer: 3000,
+        type: color,
+        timer: 1000,
         placement: {
             from: from,
             align: align

@@ -11,7 +11,7 @@ export class TableListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    showNotification('top','right', 'Between Titans')
+    showNotification('top','center', 'Between Titans')
   }
 
 }

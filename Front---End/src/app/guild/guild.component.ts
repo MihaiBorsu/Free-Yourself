@@ -11,7 +11,7 @@ export class GuildComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    showNotification('top','right', 'Together we are stronger!!!')
+    showNotification('top','center', 'Together we are stronger!!!')
   }
 
 }
