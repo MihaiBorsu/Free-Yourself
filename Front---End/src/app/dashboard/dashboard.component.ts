@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { showNotification } from '../helpers/notification'
 
 @Component({
   selector: 'app-dashboard',
@@ -67,7 +68,7 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      showNotification('top','right', 'Move you body!')
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [

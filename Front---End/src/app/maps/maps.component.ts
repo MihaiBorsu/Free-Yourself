@@ -1,6 +1,7 @@
 import { environment } from '../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
+import { showNotification } from '../helpers/notification'
 
 declare const google: any;
 
@@ -23,6 +24,8 @@ export class MapsComponent implements OnInit {
     lng = -122.41;
     constructor() { }
     ngOnInit() {
+        showNotification('top','right', 'You cannot hide...')
+
         Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
 
         this.getLocation();

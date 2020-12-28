@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service'
 import * as bcrypt from 'bcryptjs';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,6 +30,14 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const hash = bcrypt.hashSync(this.loginForm.value.password,10);
     this.loginForm.value.password = hash;
-    this.auth.login(this.loginForm.value)
+    this.auth.login(this.loginForm.value).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        this.auth.logedIn = true;
+        this.router.navigate(['/']);
+      }
+    )
   }
 }

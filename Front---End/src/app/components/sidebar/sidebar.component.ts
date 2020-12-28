@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -8,15 +9,15 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/login', title: 'Login',  icon: 'login', class: '' },
+    // { path: '/login', title: 'Login',  icon: 'login', class: '' },
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
     { path: '/table-list', title: 'Rankings',  icon:'content_paste', class: '' },
     { path: '/stolen-vehicles', title: 'Stolen Vehicles',  icon:'highlight_off', class: '' },
     { path: '/guild', title: 'Guild',  icon:'groups', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
     { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
+    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
+    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },   
     { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
     { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 ];

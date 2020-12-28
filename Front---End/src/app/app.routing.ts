@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
@@ -10,6 +11,7 @@ const routes: Routes =[
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
+    canActivate: [AuthGuard]
   }, {
     path: '',
     component: AdminLayoutComponent,

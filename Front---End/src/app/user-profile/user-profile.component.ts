@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadImageService } from '../services/upload-image.service';
+import { showNotification } from '../helpers/notification'
 
 @Component({
   selector: 'app-user-profile',
@@ -14,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private imageService : UploadImageService) { }
 
   ngOnInit() {
+    showNotification('top','right', 'Are you good enough?')
   }
 
   handleFileInput(file: FileList) {

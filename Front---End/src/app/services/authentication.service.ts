@@ -7,8 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class AuthenticationService {
 
   readonly rootUrl = 'http://localhost:49189/api'
-  // formData: PaymentDetail
-  // formData: PaymentDetail
+  logedIn = false
 
   constructor(private http:HttpClient) { }
 
@@ -16,6 +15,7 @@ export class AuthenticationService {
   login(formData){
     console.log(formData);
     return this.http.post(this.rootUrl + '/login', formData)
+    // return this.http.post(this.rootUrl + '/login', formData)
   }
 
   register(formData){

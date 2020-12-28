@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { showNotification } from '../helpers/notification'
 
 @Component({
   selector: 'app-guild',
@@ -10,6 +11,7 @@ export class GuildComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    showNotification('top','right', 'Together we are stronger!!!')
   }
 
 }

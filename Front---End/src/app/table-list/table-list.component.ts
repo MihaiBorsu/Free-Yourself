@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { showNotification } from '../helpers/notification'
 
 @Component({
   selector: 'app-table-list',
@@ -10,6 +11,7 @@ export class TableListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    showNotification('top','right', 'Between Titans')
   }
 
 }

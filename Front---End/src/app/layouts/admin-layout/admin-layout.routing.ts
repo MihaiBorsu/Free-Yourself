@@ -12,61 +12,23 @@ import { LoginComponent } from '../../login/login.component';
 import { RegisterComponent } from '../../register/register.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { AuthGuard } from '../../helpers/auth.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    // {
-    //   path: '',
-    //   children: [ {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // }]}, {
-    // path: '',
-    // children: [ {
-    //   path: 'userprofile',
-    //   component: UserProfileComponent
-    // }]
-    // }, {
-    //   path: '',
-    //   children: [ {
-    //     path: 'icons',
-    //     component: IconsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'notifications',
-    //         component: NotificationsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'maps',
-    //         component: MapsComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'typography',
-    //         component: TypographyComponent
-    //     }]
-    // }, {
-    //     path: '',
-    //     children: [ {
-    //         path: 'upgrade',
-    //         component: UpgradeComponent
-    //     }]
-    // }
     
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'guild',     component: GuildComponent },
-    { path: 'stolen-vehicles',     component: StolenVehiclesComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'user-profile',   component: UserProfileComponent, canActivate: [AuthGuard] },
+    { path: 'table-list',     component: TableListComponent, canActivate: [AuthGuard]},
+    { path: 'guild',     component: GuildComponent, canActivate: [AuthGuard] },
+    { path: 'stolen-vehicles',     component: StolenVehiclesComponent, canActivate: [AuthGuard] }, 
+    { path: 'maps',           component: MapsComponent, canActivate: [AuthGuard] },
+
     { path: 'login',        component: LoginComponent },
     { path: 'register',        component: RegisterComponent },
+
+    { path: 'notifications',  component: NotificationsComponent },
+    { path: 'typography',     component: TypographyComponent },
+    { path: 'icons',          component: IconsComponent },
+    { path: 'upgrade',        component: UpgradeComponent },
+ 
 ];

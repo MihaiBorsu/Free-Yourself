@@ -35,7 +35,16 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     const hash = bcrypt.hashSync(this.registerForm.value.password,10)
     this.registerForm.value.password = hash
-    this.auth.register(this.registerForm.value)
+    this.auth.register(this.registerForm.value).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/dashboard']);
+      },
+      err => {
+        this.auth.logedIn = true;
+        this.router.navigate(['/']);
+      }
+    )
   }
 
 }
