@@ -24,6 +24,8 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { StolenVehiclesComponent } from './stolen-vehicles/stolen-vehicles.component';
 import { GuildComponent } from './guild/guild.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
