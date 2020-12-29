@@ -9,7 +9,7 @@ using WebApi.Helpers;
 namespace WebApi.Migrations.SqliteMigrations
 {
     [DbContext(typeof(SqliteDataContext))]
-    [Migration("20201229135200_InitialCreate")]
+    [Migration("20201229170754_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,6 +17,32 @@ namespace WebApi.Migrations.SqliteMigrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
+
+            modelBuilder.Entity("WebApi.Entities.Guild", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("City")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LeaderUsername")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("TotalXP")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Guilds");
+                });
 
             modelBuilder.Entity("WebApi.Entities.User", b =>
                 {
@@ -75,9 +101,6 @@ namespace WebApi.Migrations.SqliteMigrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SerialNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("is_stolen")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -21,8 +21,5 @@ namespace WebApi.Models.Vehicles
 
         [Required]
         public string Description { get; set; }
-
-        [Required]
-        public string is_stolen { get; set; }
     }
 }

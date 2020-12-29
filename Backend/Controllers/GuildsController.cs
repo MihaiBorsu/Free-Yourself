@@ -11,40 +11,40 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using WebApi.Entities;
-using WebApi.Models.Vehicles;
+// using WebApi.Models.Users;
+using WebApi.Models.Guilds;
 
 namespace WebApi.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class VehiclesController : ControllerBase
+    public class GuildsController : ControllerBase
     {
-        private IVehicleService _vehicleService;
+        private IGuildService _guildService;
         private IMapper _mapper;
         private readonly AppSettings _appSettings;
 
-        public VehiclesController(
-            IVehicleService vehicleService,
+        public GuildsController(
+            IGuildService guildService,
             IMapper mapper,
             IOptions<AppSettings> appSettings)
         {
-            _vehicleService = vehicleService;
+            _guildService = guildService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
         }
-
 
         [HttpPost("register")]
         public IActionResult Register([FromBody]RegisterModel model)
         {
             // map model to entity
-            var vehicle = _mapper.Map<Vehicle>(model);
+            var guild = _mapper.Map<Guild>(model);
 
             try
             {
-                // create vehicle
-                _vehicleService.Create(vehicle);
+                // create guild
+                _guildService.Create(guild);
                 return Ok();
             }
             catch (AppException ex)
@@ -57,16 +57,16 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var vehicles = _vehicleService.GetAll();
-            var model = _mapper.Map<IList<UpdateModel>>(vehicles);
+            var guilds = _guildService.GetAll();
+            var model = _mapper.Map<IList<UpdateModel>>(guilds);
             return Ok(model);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var vehicle = _vehicleService.GetById(id);
-            var model = _mapper.Map<UpdateModel>(vehicle);
+            var guild = _guildService.GetById(id);
+            var model = _mapper.Map<UpdateModel>(guild);
             return Ok(model);
         }
 
@@ -74,13 +74,13 @@ namespace WebApi.Controllers
         public IActionResult Update(int id, [FromBody]UpdateModel model)
         {
             // map model to entity and set id
-            var vehicle = _mapper.Map<Vehicle>(model);
-            vehicle.Id = id;
+            var guild = _mapper.Map<Guild>(model);
+            guild.Id = id;
 
             try
             {
-                // update vehicle
-                _vehicleService.Update(vehicle);
+                // update guild
+                _guildService.Update(guild);
                 return Ok();
             }
             catch (AppException ex)
@@ -93,7 +93,7 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _vehicleService.Delete(id);
+            _guildService.Delete(id);
             return Ok();
         }
     }

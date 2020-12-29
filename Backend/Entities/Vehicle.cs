@@ -9,6 +9,5 @@ namespace WebApi.Entities
         public string SerialNumber { get; set; }
         public string ProfileContact { get; set; }
         public string Description { get; set; }
-        public string is_stolen { get; set; }
     }
 }
