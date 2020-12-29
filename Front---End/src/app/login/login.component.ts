@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service'
 import * as bcrypt from 'bcryptjs';
+import {EncrDecrService} from '../services/encr-decr.service';
+import {NavbarComponent} from '../components/navbar/navbar.component';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private crypt: EncrDecrService
   ) { }
 
   ngOnInit(): void {
@@ -28,17 +31,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const hash = bcrypt.hashSync(this.loginForm.value.password,10);
-    this.loginForm.value.password = hash;
+
+    let hash = this.crypt.set("123456789#@!", this.loginForm.value.password)
+    console.log(hash)
+    this.loginForm.value.password = hash
+
     this.auth.login(this.loginForm.value).subscribe(
       res => {
-        console.log(res);
+        console.log("Login working");
+        // this.auth.navbar = true
+        localStorage.setItem('isLogged', 'true')
+        this.router.navigate(['/']);
       },
       err => {
-        this.auth.logedIn = true;
-        localStorage.setItem('currentUser', 'Walter');
-        this.router.navigate(['/']);      
+        console.log("Login not working");     
       }
     )
   }
 }
+
+

@@ -12,12 +12,12 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Username">
+                                        <input name="username" matInput placeholder="Username" [(ngModel)]="user.username">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-5">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Company (disabled)" disabled>
+                                        <input name="phoneNumber" matInput placeholder="Phone number" [(ngModel)]="user.phoneNumber">
                                     </mat-form-field>
                                 </div>
 
@@ -25,19 +25,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Email address" type="email">
+                                        <input name="email" matInput placeholder="Email address" type="email" [(ngModel)]="user.email">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="City" type="text">
+                                        <input name="city" matInput placeholder="City" type="text" [(ngModel)]="user.city">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Country" type="text">
+                                        <input name="country" matInput placeholder="Country" type="text" [(ngModel)]="user.country">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -45,11 +45,11 @@
                                 <div class="col-md-12">
                                     <label>About Me</label>
                                     <mat-form-field class="example-full-width">
-                                        <textarea matInput placeholder="Lamborghini Boy, Dog Lover, Travel addict."></textarea>
+                                        <textarea name="description" matInput placeholder="Lamborghini Boy, Dog Lover, Travel addict." [(ngModel)]="user.description"></textarea>
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="update()">Update Profile</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

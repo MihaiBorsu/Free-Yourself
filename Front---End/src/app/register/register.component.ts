@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service'
 import * as bcrypt from 'bcryptjs';
+import {EncrDecrService} from '../services/encr-decr.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private crypt: EncrDecrService
   ) { }
 
   ngOnInit(): void {
@@ -26,23 +28,28 @@ export class RegisterComponent implements OnInit {
       city: ['', [Validators.required, Validators.minLength(6)]],
       phoneNumber: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      aboutMe: ['', [Validators.required]],
+      description: ['', [Validators.required]],
   });
   }
 
   // get f() { return this.registerForm.controls; }
 
   onSubmit() {
-    const hash = bcrypt.hashSync(this.registerForm.value.password,10)
+
+    let hash = this.crypt.set("123456789#@!", this.registerForm.value.password)
+    console.log(hash)
     this.registerForm.value.password = hash
+
     this.auth.register(this.registerForm.value).subscribe(
       res => {
-        console.log(res);
-        this.router.navigate(['/dashboard']);
+        console.log("Register working");
+        localStorage.setItem('isLogged', 'true')
+        this.router.navigate(['/']);
+
       },
       err => {
-        this.auth.logedIn = true;
-        this.router.navigate(['/']);
+        console.log("Register not working");
+
       }
     )
   }
