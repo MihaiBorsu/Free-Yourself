@@ -114,13 +114,37 @@
         <div class="col-lg-8 col-md-10 ml-auto mr-auto">
             <div class="row">
                 <div class="col-md-4">
-                    <button mat-raised-button class="btn btn-danger btn-block" >Top Left</button>
+                    <button mat-raised-button class="btn btn-warning btn-block btn-lg" disabled >Choose a workout:</button>
+                </div>
+            </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-4">
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('walk')" >Walk</button>
                 </div>
                 <div class="col-md-4">
-                    <button mat-raised-button class="btn btn-danger btn-block" >Top Center</button>
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('jogging')">Jogging</button>
                 </div>
                 <div class="col-md-4">
-                    <button mat-raised-button class="btn btn-danger btn-block" >Top Right</button>
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('run')">Run</button>
+                </div>
+            </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            <div class="row">
+                <div class="col-md-4">
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('bike')">Bike</button>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('skateboard')">Skateboard</button>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="workout('rolls')">Rolls</button>
                 </div>
             </div>
         </div>        

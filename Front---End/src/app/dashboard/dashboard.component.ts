@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { showNotification } from '../helpers/notification'
+import { XpService } from "../services/xp.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { showNotification } from '../helpers/notification'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private xpService: XpService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -146,6 +147,11 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+  }
+
+  workout(activity){
+    console.log(activity)
+    this.xpService.setCurrentWorkout(activity)
   }
 
 }

@@ -27,24 +27,24 @@
                                         XP
                                     </th>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let guild of guilds">
                                     <tr>
                                         <td>
                                             1
                                         </td>
                                         <td>
-                                            Black Hawks
+                                            {{guild.name}}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{guild.leaderUsername}}
                                         </td>
                                         <td>
-                                            32
+                                            {{guild.country}}
                                         </td>
                                         <td class="text-primary">
-                                            36738
+                                            {{guild.totalXP}}
                                         </td>
-                                    </tr>
+                                    <!-- </tr>
                                     <tr>
                                         <td>
                                             2
@@ -78,7 +78,7 @@
                                         <td class="text-primary">
                                             16142
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

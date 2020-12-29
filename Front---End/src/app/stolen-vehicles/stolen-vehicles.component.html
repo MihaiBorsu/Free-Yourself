@@ -32,74 +32,28 @@
                                     Profile
                                 </th>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let vehicle of vehicles">
                                 <tr>
                                     <td>
-                                        Bike
+                                        {{vehicle.id}}
                                     </td>
                                     <td>
-                                        Romania
+                                        {{vehicle.country}}
                                     </td>
                                     <td>
-                                        Arad
+                                        {{vehicle.city}}
                                     </td>
                                     <td>
-                                        12/06/2020
+                                        {{vehicle.date}}
                                     </td>
                                     <td class="text-primary">
-                                        367389090
+                                        {{vehicle.serialNumber}}
                                     </td>
                                     <td>
-                                        BikePhoto
+                                        {{vehicle.description}}
                                     </td>
                                     <td>
-                                        Godzilla
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        SkateBoard
-                                    </td>
-                                    <td>
-                                        Romania
-                                    </td>
-                                    <td>
-                                        Timisoara
-                                    </td>
-                                    <td>
-                                        10/06/2020
-                                    </td>
-                                    <td class="text-primary">
-                                        3003030303
-                                    </td>
-                                    <td>
-                                        SkateBoardPhoto
-                                    </td>
-                                    <td>
-                                        Rex
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Waveboard
-                                    </td>
-                                    <td>
-                                        Romania
-                                    </td>
-                                    <td>
-                                        Oradea
-                                    </td>
-                                    <td>
-                                        09/06/2020
-                                    </td>
-                                    <td class="text-primary">
-                                        9099999999
-                                    </td>
-                                    <td>
-                                        RollsPhoto
-                                    </td>
-                                    <td>
-                                        Spicky
+                                        {{vehicle.profileContact}}
                                     </td>
                                 </tr>
                             </tbody>

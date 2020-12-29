@@ -33,7 +33,7 @@ export class XpService {
         xp = distance * 12; 
          break; 
       }
-      case 'running': { 
+      case 'run': { 
         xp = distance * 10;  
          break; 
       } 
@@ -54,6 +54,10 @@ export class XpService {
          break; 
       } 
    } 
+   if(xp == 0){
+    console.log("error XP is 0")
+   }
+   localStorage.removeItem('workout');
    console.log(xp)
   }
 }
