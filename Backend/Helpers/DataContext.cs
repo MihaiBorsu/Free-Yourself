@@ -8,9 +8,9 @@ namespace WebApi.Helpers
     {
         protected readonly IConfiguration Configuration;
 
-        public DataContext()
-        {
-        }
+        // public DataContext()
+        // {
+        // }
 
         public DataContext(IConfiguration configuration)
         {
@@ -23,6 +23,11 @@ namespace WebApi.Helpers
             options.UseSqlServer(Configuration.GetConnectionString("WebApiDatabase"));
         }
 
+        public DbSet<Vehicle> Vehicles { get; set; }
+
         public DbSet<User> Users { get; set; }
+
+        // public DbSet<Vehicle> Vehicles { get; set; }
+        // public DbSet<Guild> Guilds { get; set; }
     }
 }
