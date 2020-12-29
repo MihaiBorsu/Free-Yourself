@@ -12,7 +12,7 @@ namespace WebApi.Models.Guilds
 
         public string Country { get; set; }
 
-        public string TotalXP { get; set; }
+        public int? TotalXP { get; set; }
     }
 }
 
