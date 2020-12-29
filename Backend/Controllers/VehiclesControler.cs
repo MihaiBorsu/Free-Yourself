@@ -11,8 +11,6 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using WebApi.Entities;
-// using WebApi.Models.Users;
-// using WebApi.Models.Guilds;
 using WebApi.Models.Vehicles;
 
 namespace WebApi.Controllers

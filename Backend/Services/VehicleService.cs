@@ -13,8 +13,6 @@ namespace WebApi.Services
         Vehicle GetById(int id);
         Vehicle Create(Vehicle vehicle);
         void Update(Vehicle vehicle);
-        void MarkStolen(Vehicle vehicle);
-        void MarkUnstolen(Vehicle vehicle);
         void Delete(int id);
     }
 
@@ -82,32 +80,6 @@ namespace WebApi.Services
 
             if (!string.IsNullOrWhiteSpace(vehicleParam.Description))
                 vehicle.Description = vehicleParam.Description;
-
-            _context.Vehicles.Update(vehicle);
-            _context.SaveChanges();
-        }
-
-        public void MarkStolen(Vehicle vehicleParam)
-        {
-            var vehicle = _context.Vehicles.Find(vehicleParam.Id);
-
-            if (vehicle == null)
-                throw new AppException("Vehicle not found");
-
-            vehicle.is_stolen = "true";
-
-            _context.Vehicles.Update(vehicle);
-            _context.SaveChanges();
-        }
-
-        public void MarkUnstolen(Vehicle vehicleParam)
-        {
-            var vehicle = _context.Vehicles.Find(vehicleParam.Id);
-
-            if (vehicle == null)
-                throw new AppException("Vehicle not found");
-
-            vehicle.is_stolen = "false";
 
             _context.Vehicles.Update(vehicle);
             _context.SaveChanges();

@@ -101,9 +101,6 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<string>("SerialNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("is_stolen")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");

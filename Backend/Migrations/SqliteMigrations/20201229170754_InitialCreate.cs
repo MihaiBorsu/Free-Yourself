@@ -8,6 +8,23 @@ namespace WebApi.Migrations.SqliteMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Guilds",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    LeaderUsername = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
+                    TotalXP = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Guilds", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -38,8 +55,7 @@ namespace WebApi.Migrations.SqliteMigrations
                     Date = table.Column<string>(nullable: true),
                     SerialNumber = table.Column<string>(nullable: true),
                     ProfileContact = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    is_stolen = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,6 +65,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Guilds");
+
             migrationBuilder.DropTable(
                 name: "Users");
 
