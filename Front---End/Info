@@ -1,0 +1,7 @@
+//working example
+docker build -t freeyourself_front .
+docker run  -p 4200:4200 freeyourself_front
+
+//good exemple
+docker build -t sanjaysaini2000/angular-app .
+docker run -d -it -p 80:80/tcp --name angular-app
