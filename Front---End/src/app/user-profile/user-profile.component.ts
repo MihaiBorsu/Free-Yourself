@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadImageService } from '../services/upload-image.service';
 import { showNotification } from '../helpers/notification'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-user-profile',
@@ -11,10 +12,14 @@ export class UserProfileComponent implements OnInit {
 
   imageUrl: string = "/assets/img/angular.png";
   fileToUpload: File = null;
+  user: {}
 
-  constructor(private imageService : UploadImageService) { }
+  constructor(private imageService : UploadImageService,
+              private userService : UserService) { }
 
   ngOnInit() {
+    console.log("Hello")
+    this.user = JSON.parse(localStorage.getItem('user'));
     showNotification('top','center', 'Are you good enough?')
   }
 
@@ -40,5 +45,14 @@ export class UserProfileComponent implements OnInit {
        this.imageUrl = "/assets/img/default-image.png";
      }
    );
+  }
+
+  update(){
+    this.userService.updateProfile(this.user).subscribe(res => {
+      console.log("Update worked")
+      console.log(res)
+    }, err => {
+      console.log("Error at updating profile")
+    }) 
   }
 }

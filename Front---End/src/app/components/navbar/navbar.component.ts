@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     public username: string;
+    displayNavbar: boolean
 
     
 
@@ -25,6 +26,9 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit(){
+   this.displayNavbarOrNot(localStorage.getItem('isLogged'))
+    // this.isLogged = (localStorage.getItem('isLogged') == 'true')
+    // console.log(this.isLogged)
       this.username = localStorage.getItem('currentUser');
       console.log("name is: "  + this.username)
 
@@ -134,4 +138,13 @@ export class NavbarComponent implements OnInit {
         localStorage. clear();
         window.location.reload();
     }
+
+    displayNavbarOrNot(result){
+        if(result == 'true'){
+            this.displayNavbar =  true;
+        }
+        this.displayNavbar =  false
+    }
 }
+
+

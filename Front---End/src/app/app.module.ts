@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -26,6 +26,8 @@ import { StolenVehiclesComponent } from './stolen-vehicles/stolen-vehicles.compo
 import { GuildComponent } from './guild/guild.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {EncrDecrService} from '../app/services/encr-decr.service';
+import { JwtInterceptor } from "./helpers/jwt.interceptor";
 
 @NgModule({
   imports: [
@@ -47,7 +49,9 @@ import { RegisterComponent } from './register/register.component';
     GuildComponent,
 
   ],
-  providers: [],
+  providers: [EncrDecrService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

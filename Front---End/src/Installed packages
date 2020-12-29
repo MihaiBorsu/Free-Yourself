@@ -1,3 +1,5 @@
 npm install
 //npm install password-hash
-npm install bcryptjs
+npm install bcryptjs ???
+npm install crypto-js --save
+npm install @types/crypto-js
