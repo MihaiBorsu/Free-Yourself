@@ -29,6 +29,8 @@ namespace WebApi.Helpers
 
         public DbSet<Guild> Guilds { get; set; }
 
+        public DbSet<Workout> Workouts { get; set; }
+
         // public DbSet<Vehicle> Vehicles { get; set; }
         // public DbSet<Guild> Guilds { get; set; }
     }

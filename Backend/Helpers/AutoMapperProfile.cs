@@ -3,6 +3,7 @@ using WebApi.Entities;
 using Users = WebApi.Models.Users;
 using Vehicles = WebApi.Models.Vehicles;
 using Guilds = WebApi.Models.Guilds;
+using Workouts = WebApi.Models.Workouts;
 
 namespace WebApi.Helpers
 {
@@ -24,6 +25,11 @@ namespace WebApi.Helpers
             CreateMap<Guilds.UpdateModel,Guild>();
             CreateMap<Guilds.RegisterModel, Guild>();
             CreateMap<Guild,Guilds.UpdateModel>();
+            //workout maps
+            CreateMap<Workout, Workouts.RegisterModel>();
+            CreateMap<Workouts.UpdateModel,Workout>();
+            CreateMap<Workouts.RegisterModel, Workout>();
+            CreateMap<Workout,Workouts.UpdateModel>();
         }
     }
 }

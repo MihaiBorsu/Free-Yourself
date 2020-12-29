@@ -83,6 +83,7 @@ namespace WebApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IGuildService, GuildService>();
+            services.AddScoped<IWorkoutService, WorkoutService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
