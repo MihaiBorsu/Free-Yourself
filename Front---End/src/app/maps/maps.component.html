@@ -1,6 +1,14 @@
-
-
 <div class="main-content">
+    <div class="container-fluid">
+        <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="initializeMap()">Initialise</button>
+        <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="moveMap()">Move</button>
+        <div id="map"></div>
+        <div id="distance" class="distance-container">{{distance}}</div>
+
+        </div>
+</div>
+
+<!-- <div class="main-content">
     <div class="container-fluid">
             <div class="col-md-4">
                 <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="stopWorkout()">Stop Workout</button>
@@ -8,4 +16,4 @@
 <div id="map" class="row"></div>
 
 </div>
-</div>
+</div> -->

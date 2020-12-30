@@ -67,4 +67,10 @@ export class UserService {
     console.log(id)
     return this.http.delete('http://localhost:4000/vehicles/' + id);
   }
+
+  getDashboard(id){
+    return this.http.get('http://localhost:4000/workouts/dashboard/'+ id);
+  }
+
+  
 }
