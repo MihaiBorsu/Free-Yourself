@@ -100,7 +100,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        [HttpGet("dashboard")]
+        [HttpPost("dashboard")]
         public IActionResult GetDashboard([FromBody]DashboardModel model)
         {
             model.DailyXp = _workoutService.GetTotalUserXPInOneDay(DateTime.Today, model.userId);

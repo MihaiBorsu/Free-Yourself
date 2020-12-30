@@ -59,7 +59,7 @@ put:/workouts/{pk}
 
 delete:/workouts/{pk}
 
-get:/dashboard
+post:/workouts/dashboard
 
 {
 	"userId" : 1
