@@ -18,9 +18,16 @@ export class UserProfileComponent implements OnInit {
               private userService : UserService) { }
 
   ngOnInit() {
-    console.log("Hello")
-    this.user = JSON.parse(localStorage.getItem('user'));
-    showNotification('top','center', 'Are you good enough?')
+    this.userService.getProfile().subscribe(
+      res => {
+        console.log("Hello")
+        this.user = res
+        showNotification('top','center', 'Are you good enough?')
+      }, err => {
+
+      }
+    )
+   
   }
 
   handleFileInput(file: FileList) {
@@ -49,8 +56,7 @@ export class UserProfileComponent implements OnInit {
 
   update(){
     this.userService.updateProfile(this.user).subscribe(res => {
-      console.log("Update worked")
-      console.log(res)
+      showNotification('top','left', 'Update worked?')
     }, err => {
       console.log("Error at updating profile")
     }) 

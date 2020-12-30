@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { showNotification } from '../helpers/notification'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-stolen-vehicles',
@@ -7,11 +8,93 @@ import { showNotification } from '../helpers/notification'
   styleUrls: ['./stolen-vehicles.component.css']
 })
 export class StolenVehiclesComponent implements OnInit {
+  vehicles: {}
+  stolenVehicle: {}
+  register: boolean
+  update: boolean
+  updateStolenVehicle: {}
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
-    showNotification('top','center', 'Lets go hunting')
+    this.register = false
+    this.update = false
+    // this.stolenVehicle = {    username: 'dsd',
+    //                 phoneNumber: 'dsd',
+    //                 email: 'dsd',
+    //                 city: 'dsd',
+    //                 country: 'dsd',
+    //                 description: 'dsd'
+    //               }
+    this.stolenVehicle = {    serialNumber: 'dsd',
+                              profileContact: 'dsd',
+                              date: 'dsd',
+                              city: 'dsd',
+                              country: 'dsd',
+                              description: 'dsd'
+  }
+    this.userService.getVehicles().subscribe(
+      res => {
+        this.vehicles = res
+        console.log(res)
+        console.log("Working getVehicle")
+        showNotification('top','center', 'Lets go hunting')
+      }, err => {
+        console.log("Error at getVehicle")
+      }
+    )
+    
+  }
+
+  addStolenVehicle(){
+    this.register = true
+  }
+
+  cancelAddingVehicle(){
+    this.ngOnInit();
+  }
+
+  registerVehicle(){
+    this.userService.registerVehicle(this.stolenVehicle).subscribe(
+    res => {
+      this.vehicles = res
+      console.log(res)
+      console.log("Working getVehicle")
+      showNotification('top','center', 'Lets go hunting')
+      this.ngOnInit();
+    }, err => {
+      console.log("Error at getVehicle")
+    })
+  }
+
+  updateObject(vehicle){
+    this.update = true
+    this.updateStolenVehicle = vehicle
+  }
+
+  updateVehicle(id){
+    this.userService.updateVehicle(id, this.updateStolenVehicle).subscribe(
+      res => {
+        console.log(res)
+        console.log("Working getVehicle")
+        showNotification('top','center', 'Updated succesfully')
+        this.ngOnInit();
+      }, err => {
+        console.log("Error at getVehicle")
+      })
+    console.log(id)
+  }
+
+  deleteVehicle(id){
+    this.userService.deleteVehicle(id).subscribe(
+      res => {
+        console.log(res)
+        console.log("Working getVehicle")
+        showNotification('top','center', 'Deleted succesfully')
+        this.ngOnInit();
+      }, err => {
+        console.log("Error at getVehicle")
+      })
   }
 
 }

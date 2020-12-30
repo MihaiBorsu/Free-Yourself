@@ -27,58 +27,23 @@
                                         XP
                                     </th>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let guild of guilds">
                                     <tr>
                                         <td>
                                             1
                                         </td>
                                         <td>
-                                            Black Hawks
+                                            {{guild.name}}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{guild.leaderUsername}}
                                         </td>
                                         <td>
-                                            32
+                                            {{guild.country}}
                                         </td>
                                         <td class="text-primary">
-                                            36738
+                                            {{guild.totalXP}}
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            Blue Curaçao
-                                        </td>
-                                        <td>
-                                            Minerva Hooper
-                                        </td>
-                                        <td>
-                                            27
-                                        </td>
-                                        <td class="text-primary">
-                                            23789
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            Netherland's Magic Cakes
-                                        </td>
-                                        <td>
-                                            Sage Rodriguez
-                                        </td>
-                                        <td>
-                                            37
-                                        </td>
-                                        <td class="text-primary">
-                                            16142
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -102,65 +67,31 @@
                                         Name
                                     </th>
                                     <th>
-                                        City
+                                        Country
                                     </th>
                                     <th>
-                                        Country
+                                        City
                                     </th>
                                     <th>
                                         XP
                                     </th>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let user of users">
                                     <tr>
                                         <td>
                                             1
                                         </td>
                                         <td>
-                                            Yehonatan Shyam
+                                            {{user.username}}
                                         </td>
                                         <td>
-                                            Arad
+                                            {{user.country}}
                                         </td>
                                         <td>
-                                            Romania
+                                            {{user.city}}
                                         </td>
                                         <td>
-                                            6176
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            William Cooper
-                                        </td>
-                                        <td>
-                                            Wien
-                                        </td>
-                                        <td>
-                                            Austria
-                                        </td>
-                                        <td>
-                                            5987
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            Doris Greene
-                                        </td>
-                                        <td>
-                                            Barcelona
-                                        </td>
-                                        <td>
-                                            Spain
-                                        </td>
-                                        <td>
-                                            5321
+                                            {{user.phoneNumber}}
                                         </td>
                                     </tr>
                                 </tbody>

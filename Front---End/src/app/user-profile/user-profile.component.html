@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input name="username" matInput placeholder="Username" [(ngModel)]="user.username">
+                                        <input name="username" matInput placeholder="Username" [(ngModel)]="user.username" disabled>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-5">
@@ -59,15 +59,16 @@
                 <div class="card card-profile">
                     <div class="card-avatar">
                         <a href="javascript:void(0)">
-                            <img class="img" src="./assets/img/faces/marc.jpg" />
+                            <img class="img" src="./assets/img/profilePicture.png" />
                         </a>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Alec Thompson</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
+                        <h4 class="card-title">{{user.username}}</h4>
+                        <h6 class="card-category text-gray">{{user.country}} / {{user.city}}</h6>
+                        
+                        <!-- <p class="card-description"  [(ngModel)]="user.description"></p> -->
+                        <input name="description" matInput  type="text" [(ngModel)]="user.description">
+                        <!-- <input class="card-description" type="text" [(ngModel)]="user.description" > -->
                                 <form #imageForm=ngForm (ngSubmit)="OnSubmit(Caption,Image)">
                                   <div class="row">
                                     <div class="input-field col s12">
