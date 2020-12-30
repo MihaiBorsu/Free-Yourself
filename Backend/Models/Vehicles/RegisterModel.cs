@@ -24,6 +24,8 @@ namespace WebApi.Models.Vehicles
 
         [Required]
         public string photoLink { get; set; }
+        [Required]
+        public string Type { get; set; }
 
     }
 }

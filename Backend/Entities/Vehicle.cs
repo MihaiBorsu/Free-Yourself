@@ -11,5 +11,7 @@ namespace WebApi.Entities
         // public string Description { get; set; }
         public int? UserId { get; set; }
         public string photoLink { get; set; }
+        public string Type { get; set; }
+
     }
 }

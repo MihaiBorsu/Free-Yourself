@@ -16,6 +16,7 @@ namespace WebApi.Models.Guilds
         public string Country { get; set; }
 
         public int? TotalXP { get; set; }
+        public int? NoOfMembers { get; set; }
 
         // public int? NewMemberId { get; set; }
     }

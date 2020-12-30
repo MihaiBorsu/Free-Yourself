@@ -86,7 +86,8 @@ post:/vehicles/register
 	"SerialNumber" : "05412356498745451",
 	"ProfileContact" : "Mihai",
 	"UserId" : 1,
-	"photoLink" : "https://www.dasdasdasd.com"
+	"photoLink" : "https://www.dasdasdasd.com",
+	"type" : ""
 }
 
 get:/vehicles
@@ -102,7 +103,8 @@ put:/vehicles/{pk}
 	"SerialNumber" : "05412356498745451",
 	"ProfileContact" : "Mihai",
 	"UserId" : 1,
-	"photoLink" : "https://www.dasdasdasd.com"
+	"photoLink" : "https://www.dasdasdasd.com",
+	"type" : ""
 }
 
 delete:/vehicles/{pk}
