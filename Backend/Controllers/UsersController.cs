@@ -143,13 +143,5 @@ namespace WebApi.Controllers
             var model = _mapper.Map<IList<UserModel>>(users);
             return Ok(model);
         }
-
-        [HttpGet("ranking")]
-        public IActionResult GetuserRanking()
-        {
-            var users = _userService.GetuserRanking();
-            var model = _mapper.Map<IList<UserModel>>(users);
-            return Ok(model);
-        }
     }
 }

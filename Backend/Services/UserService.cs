@@ -15,7 +15,6 @@ namespace WebApi.Services
         void Update(User user, string password = null);
         void Delete(int id);
         IEnumerable<User> GetUsersFromGuild(int GuildId);
-        IEnumerable<User> GetuserRanking();
     }
 
     public class UserService : IUserService
@@ -137,11 +136,6 @@ namespace WebApi.Services
         public IEnumerable<User> GetUsersFromGuild(int GuildId)
         {
             return _context.Users.Where(u => u.GuildId.Equals(GuildId));
-        }
-
-        public IEnumerable<User> GetuserRanking()
-        {
-            return _context.Users.OrderByDescending(x => x.TotalXP);
         }
 
 

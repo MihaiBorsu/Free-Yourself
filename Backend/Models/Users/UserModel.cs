@@ -17,6 +17,5 @@ namespace WebApi.Models.Users
         public string Description { get; set; }
 
         public int? GuildId { get; set; }
-        public int? TotalXP { get; set; }
     }
 }

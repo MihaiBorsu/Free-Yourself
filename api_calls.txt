@@ -19,11 +19,7 @@ post:/users/Authenticate
 
 get:/users
 
-get:/users/ranking
-
 get:/users/{pk}
-
-get:/users/in_guild/{guildId}
 
 put:/users/{pk}  //fields are optional
 
@@ -69,7 +65,7 @@ post:/workouts/dashboard
 	"userId" : 1
 }
 
-post:/workouts/mytotal
+get:/workouts/mytotal
 
 {
 	"userId": 1
@@ -122,8 +118,6 @@ post:/guilds/register
 }
 
 get:/guilds
-
-get:/guilds/ranking
 
 get:/guilds/{pk}
 

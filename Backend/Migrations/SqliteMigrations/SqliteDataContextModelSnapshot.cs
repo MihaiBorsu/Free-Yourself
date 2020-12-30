@@ -75,9 +75,6 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TotalXP")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Username")
                         .HasColumnType("TEXT");
 

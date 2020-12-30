@@ -30,6 +30,7 @@ export class UserService {
 
   updateProfile(userData){
     let user = <User>JSON.parse(localStorage.getItem('user'));
+    console.log(userData)
     return this.http.put('http://localhost:4000/users/' + user.id, userData);
   }
 
@@ -69,7 +70,10 @@ export class UserService {
   }
 
   getDashboard(id){
-    return this.http.get('http://localhost:4000/workouts/dashboard/'+ id);
+    let req = {
+      userid: id
+    }
+    return this.http.post('http://localhost:4000/workouts/dashboard', req);
   }
 
   

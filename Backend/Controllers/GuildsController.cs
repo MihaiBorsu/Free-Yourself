@@ -98,13 +98,5 @@ namespace WebApi.Controllers
             _guildService.Delete(id);
             return Ok();
         }
-
-        [HttpGet("ranking")]
-        public IActionResult GetGuildRanking()
-        {
-            var guilds = _guildService.GetGuildRanking();
-            var model = _mapper.Map<IList<UpdateModel>>(guilds);
-            return Ok(model);
-        }
     }
 }

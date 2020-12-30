@@ -23,9 +23,6 @@ namespace WebApi.Services
         int? GetUserXpTotal(int userId);
         int? GetGuildXPTotal(int guildId);
         void UpdateGuildWithTotalXP(Workout workoutParam);
-        int? GetUserXPTotal(int userId);
-        public void UpdateUserWithTotalXP(Workout workoutParam);
-        User GetUserFromWorkout(Workout workoutParam);
     }
 
     public class WorkoutService : IWorkoutService
@@ -181,24 +178,9 @@ namespace WebApi.Services
             return sum;
         }
 
-        public int? GetUserXPTotal(int userId)
-        {
-            int? sum = 0;
-            var workouts =  _context.Workouts.Where(w => w.userId.Equals(userId));
-
-            foreach (var workout in workouts)
-                sum += workout.XP;
-
-            return sum;
-        }
-
-        public User GetUserFromWorkout(Workout workoutParam)
-        {
-            return _context.Users.Find(workoutParam.userId);
-        }
-
         public void UpdateGuildWithTotalXP(Workout workoutParam)
         {
+            // var workout = _context.Workouts.Find(workoutParam.Id);
             var user = _context.Users.Find(workoutParam.userId);
             var guild = _context.Guilds.Find(user.GuildId);
 
@@ -212,22 +194,6 @@ namespace WebApi.Services
             _context.Guilds.Update(guild);
             _context.SaveChanges();
         }
-
-        public void UpdateUserWithTotalXP(Workout workoutParam)
-        {
-            var user = _context.Users.Find(workoutParam.userId);
-
-            if (user == null)
-                throw new AppException("user not found");
-
-            // update user total xp
-            user.TotalXP = GetUserXPTotal(user.Id);
-
-
-            _context.Users.Update(user);
-            _context.SaveChanges();
-        }
-
 
     }
 }

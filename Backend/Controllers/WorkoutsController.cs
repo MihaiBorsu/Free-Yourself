@@ -47,11 +47,7 @@ namespace WebApi.Controllers
                 // create workout
                 _workoutService.Create(workout);
                 // update guild with total xp
-                // check if user has guild first
-                if (_workoutService.GetUserFromWorkout(workout).GuildId != null)
-                    _workoutService.UpdateGuildWithTotalXP(workout);
-                //update user with total xp
-                _workoutService.UpdateUserWithTotalXP(workout);
+                _workoutService.UpdateGuildWithTotalXP(workout);
                 return Ok();
             }
             catch (AppException ex)
@@ -119,7 +115,7 @@ namespace WebApi.Controllers
             return Ok(model);
         }
 
-        [HttpPost("mytotal")]
+        [HttpGet("mytotal")]
         public IActionResult GetUserXP([FromBody]UserXPModel model)
         {
             model.userXP = _workoutService.GetUserXpTotal(model.userId);
