@@ -120,6 +120,11 @@ namespace WebApi.Services
                 user.PasswordSalt = passwordSalt;
             }
 
+            if (userParam.GuildId.HasValue)
+            {
+                user.GuildId = userParam.GuildId;
+            }
+
             _context.Users.Update(user);
             _context.SaveChanges();
         }
