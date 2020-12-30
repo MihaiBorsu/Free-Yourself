@@ -20,6 +20,10 @@ namespace WebApi.Models.Vehicles
         public string ProfileContact { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public int? UserId { get; set; }
+
+        [Required]
+        public string photoLink { get; set; }
+
     }
 }

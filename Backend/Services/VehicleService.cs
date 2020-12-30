@@ -78,8 +78,13 @@ namespace WebApi.Services
             if (!string.IsNullOrWhiteSpace(vehicleParam.ProfileContact))
                 vehicle.ProfileContact = vehicleParam.ProfileContact;
 
-            if (!string.IsNullOrWhiteSpace(vehicleParam.Description))
-                vehicle.Description = vehicleParam.Description;
+            if (vehicleParam.UserId.HasValue)
+            {
+                vehicle.UserId = vehicleParam.UserId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(vehicleParam.photoLink))
+                vehicle.photoLink = vehicleParam.photoLink;
 
             _context.Vehicles.Update(vehicle);
             _context.SaveChanges();

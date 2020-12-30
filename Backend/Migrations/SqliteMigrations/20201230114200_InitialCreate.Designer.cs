@@ -9,8 +9,8 @@ using WebApi.Helpers;
 namespace WebApi.Migrations.SqliteMigrations
 {
     [DbContext(typeof(SqliteDataContext))]
-    [Migration("20201229182656_SecondMigrate")]
-    partial class SecondMigrate
+    [Migration("20201230114200_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,13 +94,16 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<string>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("ProfileContact")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SerialNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("photoLink")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

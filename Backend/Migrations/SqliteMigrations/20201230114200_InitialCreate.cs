@@ -55,11 +55,27 @@ namespace WebApi.Migrations.SqliteMigrations
                     Date = table.Column<string>(nullable: true),
                     SerialNumber = table.Column<string>(nullable: true),
                     ProfileContact = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    photoLink = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vehicles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    userId = table.Column<int>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    XP = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workouts", x => x.Id);
                 });
         }
 
@@ -73,6 +89,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
             migrationBuilder.DropTable(
                 name: "Vehicles");
+
+            migrationBuilder.DropTable(
+                name: "Workouts");
         }
     }
 }

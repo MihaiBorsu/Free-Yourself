@@ -1,0 +1,23 @@
+/users/register
+
+{
+	"username" : "Mihai",
+	"Email" : "mihai.borsu@gmail.com",
+	"Country" : "Romania",
+	"City": "Timisoara",
+	"PhoneNumber" : "0745687956",
+	"Password" : "Mihai",
+	"Description" : "proaspat tuns"
+}
+
+/vehicles/register
+
+{
+	"Country" : "Romania",
+	"City" : "Timisoara",
+	"Date" : "2020-10-12",
+	"SerialNumber" : "05412356498745451",
+	"ProfileContact" : "Mihai",
+	"UserId" : 1,
+	"photoLink" : "https://www.dasdasdasd.com"
+}

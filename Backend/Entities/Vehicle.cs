@@ -8,6 +8,8 @@ namespace WebApi.Entities
         public string Date { get; set; }
         public string SerialNumber { get; set; }
         public string ProfileContact { get; set; }
-        public string Description { get; set; }
+        // public string Description { get; set; }
+        public int? UserId { get; set; }
+        public string photoLink { get; set; }
     }
 }
