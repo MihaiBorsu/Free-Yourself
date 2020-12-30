@@ -1,3 +1,8 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
+
 namespace WebApi.Entities
 {
     public class Guild
@@ -8,5 +13,7 @@ namespace WebApi.Entities
         public string City { get; set; }
         public string Country { get; set; }
         public int? TotalXP { get; set; }
+        public int? NoOfMembers { get; set; }
     }
+
 }

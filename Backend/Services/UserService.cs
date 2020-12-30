@@ -108,6 +108,13 @@ namespace WebApi.Services
             if (!string.IsNullOrWhiteSpace(userParam.Description))
                 user.Description = userParam.Description;
 
+            if (userParam.GuildId.HasValue)
+                user.GuildId = userParam.GuildId;
+
+            if (userParam.GuildId == null)
+                user.GuildId = null;
+
+
             // update password if provided
             if (!string.IsNullOrWhiteSpace(password))
             {

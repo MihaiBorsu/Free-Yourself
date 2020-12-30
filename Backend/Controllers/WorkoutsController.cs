@@ -46,6 +46,8 @@ namespace WebApi.Controllers
             {
                 // create workout
                 _workoutService.Create(workout);
+                // update guild with total xp
+                _workoutService.UpdateGuildWithTotalXP(workout);
                 return Ok();
             }
             catch (AppException ex)
@@ -109,6 +111,14 @@ namespace WebApi.Controllers
             model.TwelveMonthsXp = _workoutService.GetUserXpInEachLast12Months(DateTime.Today, model.userId);
 
             // var workout = _mapper.Map<Workout>(model);
+
+            return Ok(model);
+        }
+
+        [HttpGet("mytotal")]
+        public IActionResult GetUserXP([FromBody]UserXPModel model)
+        {
+            model.userXP = _workoutService.GetUserXpTotal(model.userId);
 
             return Ok(model);
         }

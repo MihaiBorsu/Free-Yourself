@@ -9,7 +9,7 @@ using WebApi.Helpers;
 namespace WebApi.Migrations.SqliteMigrations
 {
     [DbContext(typeof(SqliteDataContext))]
-    [Migration("20201230114200_InitialCreate")]
+    [Migration("20201230154535_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("NoOfMembers")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("TotalXP")
                         .HasColumnType("INTEGER");
 
@@ -61,6 +64,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("GuildId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");

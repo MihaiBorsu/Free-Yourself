@@ -39,6 +39,11 @@ namespace WebApi.Services
             if (_context.Guilds.Any(x => x.Name == guild.Name))
                 throw new AppException("Guild name \"" + guild.Name + "\" is already taken");
 
+            guild.NoOfMembers = 0;
+            // guild.MembersIds = new List<User>();
+            // guild.MembersIds.Add(1);
+            // guild.MembersIds.Add(2);
+
             _context.Guilds.Add(guild);
             _context.SaveChanges();
 
@@ -78,6 +83,14 @@ namespace WebApi.Services
             if (guildParam.TotalXP.HasValue)
                 guild.TotalXP = guildParam.TotalXP;
 
+            // if (guildParam.NewMemberId != null)
+            // {
+            //     guild.NoOfMembers++;
+            //     guild.MembersIds.Add(_context.Users.Find(guildParam.NewMemberId));
+            //     Console.WriteLine("DEBUG DEBUG !!!!! " + guildParam.NewMemberId);
+            //     // guild.MembersIds = new List<int>();
+            //     // Console.WriteLine("LIST !!! " + guild.MembersIds);
+            // }
 
             _context.Guilds.Update(guild);
             _context.SaveChanges();

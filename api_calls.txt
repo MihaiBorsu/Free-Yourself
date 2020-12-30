@@ -1,4 +1,4 @@
-/users/register
+post:/users/register
 
 {
 	"username" : "Mihai",
@@ -10,7 +10,70 @@
 	"Description" : "proaspat tuns"
 }
 
-/vehicles/register
+post:/users/Authenticate
+
+{
+	"username" : "dsadasd",
+	"password" : "dsadasf"
+}
+
+get:/users
+
+get:/users/{pk}
+
+put:/users/{pk}  //fields are optional
+
+{
+	"Username" : "",
+	"Email" : "",
+	"Country" : "".
+	"City" : "",
+	"PhoneNumber" : "",
+	"Password" : "",
+	"Description" : "",
+	"GuildId" : 0  //poate sa ia si null
+}
+
+delete:/users/{pk}
+
+--------------------------------------------------------
+
+post:/workouts/register
+
+{
+	"userId" : 1,
+	"XP" : 100
+}
+
+get:/workouts
+
+get:/workouts/{pk}
+
+put:/workouts/{pk}
+
+{
+	"userId": 1,
+	"XP": 100,
+	"Date" : "2020-12-30T00:00:00"  // must be of exactly this form; it is here so we can manually set dates in the past, it is not needed in the workflow
+}
+
+delete:/workouts/{pk}
+
+get:/dashboard
+
+{
+	"userId" : 1
+}
+
+get:/workouts/mytotal
+
+{
+	"userId": 1
+}
+
+--------------------------------------------------------
+
+post:/vehicles/register
 
 {
 	"Country" : "Romania",
@@ -21,3 +84,50 @@
 	"UserId" : 1,
 	"photoLink" : "https://www.dasdasdasd.com"
 }
+
+get:/vehicles
+
+get:/vehicles/{pk}
+
+put:/vehicles/{pk}
+
+{
+	"Country" : "Romania",
+	"City" : "Timisoara",
+	"Date" : "2020-10-12",
+	"SerialNumber" : "05412356498745451",
+	"ProfileContact" : "Mihai",
+	"UserId" : 1,
+	"photoLink" : "https://www.dasdasdasd.com"
+}
+
+delete:/vehicles/{pk}
+
+--------------------------------------------------------
+
+post:/guilds/register
+
+{
+	"LeaderUsername" : "Mihai",
+	"Name" : "Mihai's guild",
+	"City" : "Timisoara",
+	"Country" : "Romania",
+	"TotalXP" : 0
+}
+
+get:/guilds
+
+get:/guilds/{pk}
+
+put:/guilds/{id}  // fields are optional
+
+{
+	"LeaderUsername"
+	"Name"
+	"City"
+	"Country"
+	"TotalXP"
+	"NewMemberId" : 1
+}
+
+delete:/guilds/{pk}

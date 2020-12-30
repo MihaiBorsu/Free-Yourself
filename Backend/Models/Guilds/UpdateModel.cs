@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using WebApi.Entities;
+
 namespace WebApi.Models.Guilds
 {
   public class UpdateModel
@@ -13,6 +16,8 @@ namespace WebApi.Models.Guilds
         public string Country { get; set; }
 
         public int? TotalXP { get; set; }
+
+        // public int? NewMemberId { get; set; }
     }
 }
 

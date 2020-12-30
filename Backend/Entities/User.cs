@@ -11,5 +11,6 @@ namespace WebApi.Entities
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public string Description { get; set; }
+        public int? GuildId { get; set; }
     }
 }

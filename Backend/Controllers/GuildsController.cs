@@ -44,7 +44,9 @@ namespace WebApi.Controllers
             try
             {
                 // create guild
-                _guildService.Create(guild);
+                var guild_created = _guildService.Create(guild);
+                // Console.WriteLine("in register controller NO OF MEMBERS = " + guild_created.NoOfMembers);
+                // Console.WriteLine("in register controller LIST REFFRENCE = " + guild_created.MembersIds);
                 return Ok();
             }
             catch (AppException ex)

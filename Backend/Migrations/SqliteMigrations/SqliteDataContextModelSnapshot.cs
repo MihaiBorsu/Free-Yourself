@@ -34,6 +34,9 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("NoOfMembers")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("TotalXP")
                         .HasColumnType("INTEGER");
 
@@ -59,6 +62,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("GuildId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");

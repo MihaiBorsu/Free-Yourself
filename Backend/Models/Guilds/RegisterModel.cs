@@ -18,5 +18,6 @@ namespace WebApi.Models.Guilds
 
         [Required]
         public int? TotalXP { get; set; }
+
     }
 }

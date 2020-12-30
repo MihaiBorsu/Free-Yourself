@@ -17,7 +17,8 @@ namespace WebApi.Migrations.SqliteMigrations
                     Name = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
-                    TotalXP = table.Column<int>(nullable: true)
+                    TotalXP = table.Column<int>(nullable: true),
+                    NoOfMembers = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,7 +38,8 @@ namespace WebApi.Migrations.SqliteMigrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    GuildId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

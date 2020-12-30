@@ -18,5 +18,6 @@ namespace WebApi.Models.Users
         public string Password { get; set; }
 
         public string Description { get; set; }
+        public int? GuildId { get; set; }
     }
 }

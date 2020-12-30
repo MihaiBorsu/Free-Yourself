@@ -21,10 +21,10 @@ namespace WebApi.Helpers
             CreateMap<Vehicles.RegisterModel, Vehicle>();
             CreateMap<Vehicle,Vehicles.UpdateModel>();
             //guild maps
-            CreateMap<Guild, Guilds.RegisterModel>();
-            CreateMap<Guilds.UpdateModel,Guild>();
-            CreateMap<Guilds.RegisterModel, Guild>();
-            CreateMap<Guild,Guilds.UpdateModel>();
+            CreateMap<Guild, Guilds.RegisterModel>();//.ForSourceMember(x => x.MembersIds, opt => opt.DoNotValidate());
+            CreateMap<Guilds.UpdateModel,Guild>();//.ForMember(x => x.MembersIds, opt => opt.Ignore());
+            CreateMap<Guilds.RegisterModel, Guild>();//.ForMember(x => x.MembersIds, opt => opt.Ignore());
+            CreateMap<Guild,Guilds.UpdateModel>();//.ForSourceMember(x => x.MembersIds, opt => opt.DoNotValidate());
             //workout maps
             CreateMap<Workout, Workouts.RegisterModel>();
             CreateMap<Workouts.UpdateModel,Workout>();

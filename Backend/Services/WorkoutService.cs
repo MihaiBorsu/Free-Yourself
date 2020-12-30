@@ -21,6 +21,8 @@ namespace WebApi.Services
         IList<int?> GetUserXpInEachLast7Days(DateTime day, int userId);
         IList<int?> GetUserXpInEachLast12Months(DateTime day, int userId);
         int? GetUserXpTotal(int userId);
+        int? GetGuildXPTotal(int guildId);
+        void UpdateGuildWithTotalXP(Workout workoutParam);
     }
 
     public class WorkoutService : IWorkoutService
@@ -160,6 +162,37 @@ namespace WebApi.Services
             }
 
             return sum;
+        }
+
+        public int? GetGuildXPTotal(int guildId)
+        {
+            int? sum = 0;
+            var usersInGuild = _context.Users.Where(u => u.GuildId.Equals(guildId));
+            foreach (var user in usersInGuild)
+            {
+                var workouts =  _context.Workouts.Where(w => w.userId.Equals(user.Id));
+                foreach (var workout in workouts)
+                    sum += workout.XP;
+            }
+
+            return sum;
+        }
+
+        public void UpdateGuildWithTotalXP(Workout workoutParam)
+        {
+            // var workout = _context.Workouts.Find(workoutParam.Id);
+            var user = _context.Users.Find(workoutParam.userId);
+            var guild = _context.Guilds.Find(user.GuildId);
+
+            if (guild == null)
+                throw new AppException("guild not found");
+
+            // update guild total xp
+            guild.TotalXP = GetGuildXPTotal(guild.Id);
+
+
+            _context.Guilds.Update(guild);
+            _context.SaveChanges();
         }
 
     }
