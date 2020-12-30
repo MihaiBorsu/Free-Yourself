@@ -13,6 +13,7 @@ namespace WebApi.Services
         Guild Create(Guild guild);
         void Update(Guild guild);
         void Delete(int id);
+        IEnumerable<Guild> GetGuildRanking();
     }
 
     public class GuildService : IGuildService
@@ -83,15 +84,6 @@ namespace WebApi.Services
             if (guildParam.TotalXP.HasValue)
                 guild.TotalXP = guildParam.TotalXP;
 
-            // if (guildParam.NewMemberId != null)
-            // {
-            //     guild.NoOfMembers++;
-            //     guild.MembersIds.Add(_context.Users.Find(guildParam.NewMemberId));
-            //     Console.WriteLine("DEBUG DEBUG !!!!! " + guildParam.NewMemberId);
-            //     // guild.MembersIds = new List<int>();
-            //     // Console.WriteLine("LIST !!! " + guild.MembersIds);
-            // }
-
             _context.Guilds.Update(guild);
             _context.SaveChanges();
         }
@@ -104,6 +96,11 @@ namespace WebApi.Services
                 _context.Guilds.Remove(guild);
                 _context.SaveChanges();
             }
+        }
+
+        public IEnumerable<Guild> GetGuildRanking()
+        {
+            return _context.Guilds.OrderByDescending(x => x.TotalXP);
         }
     }
 }
