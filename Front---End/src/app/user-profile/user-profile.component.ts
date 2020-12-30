@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { UploadImageService } from '../services/upload-image.service';
 import { showNotification } from '../helpers/notification'
@@ -12,7 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   imageUrl: string = "/assets/img/angular.png";
   fileToUpload: File = null;
-  user: {}
+  user: any
 
   constructor(private imageService : UploadImageService,
               private userService : UserService) { }
@@ -21,6 +23,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.getProfile().subscribe(
       res => {
         console.log("Hello")
+        console.log(res)
         this.user = res
         showNotification('top','center', 'Are you good enough?')
       }, err => {
@@ -55,6 +58,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   update(){
+    this.user.guildId = parseInt(this.user.guildId)
     this.userService.updateProfile(this.user).subscribe(res => {
       showNotification('top','left', 'Update worked?')
     }, err => {

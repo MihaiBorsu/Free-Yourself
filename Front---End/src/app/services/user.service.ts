@@ -1,3 +1,4 @@
+//user service ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaderResponse } from "@angular/common/http";
 // import {Http, Headers} from '@angular/http';
@@ -30,11 +31,13 @@ export class UserService {
 
   updateProfile(userData){
     let user = <User>JSON.parse(localStorage.getItem('user'));
+    delete userData.username
+    console.log(userData)
     return this.http.put('http://localhost:4000/users/' + user.id, userData);
   }
 
   getGuilds(){
-    return this.http.get('http://localhost:4000/guilds');
+    return this.http.get('http://localhost:4000/guilds/ranking');
   }
 
   getVehicles(){
@@ -42,7 +45,7 @@ export class UserService {
   }
 
   getUserRanking(){
-    return this.http.get('http://localhost:4000/users');
+    return this.http.get('http://localhost:4000/users/ranking');
   }
 
   getGuild(id){
@@ -69,7 +72,10 @@ export class UserService {
   }
 
   getDashboard(id){
-    return this.http.get('http://localhost:4000/workouts/dashboard/'+ id);
+    let req = {
+      userid: id
+    }
+    return this.http.post('http://localhost:4000/workouts/dashboard', req);
   }
 
   
