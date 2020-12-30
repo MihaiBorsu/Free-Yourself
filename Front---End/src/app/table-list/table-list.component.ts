@@ -9,6 +9,7 @@ import { UserService } from '../services/user.service'
 })
 export class TableListComponent implements OnInit {
   guilds: {}
+  users: {}
 
   constructor(private userService : UserService) { }
 
@@ -18,6 +19,17 @@ export class TableListComponent implements OnInit {
         this.guilds = res
         console.log(res)
         console.log("Working getGuilds")
+        // showNotification('top','center', 'Between Titans')
+      }, err => {
+        console.log("Error at getGuilds")
+      }
+    )
+
+    this.userService.getUserRanking().subscribe(
+      res => {
+        this.users = res
+        console.log(res)
+        console.log("Working getUserRanking")
         showNotification('top','center', 'Between Titans')
       }, err => {
         console.log("Error at getGuilds")

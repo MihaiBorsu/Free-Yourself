@@ -5,12 +5,12 @@
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a href="javascript:void(0)">
-                        <img class="img" src="./assets/img/faces/marc.jpg" />
+                        <img class="img" src="./assets/img/profilePicture.png" />
                     </a>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-category text-gray">CEO / BlueCuracao</h6>
-                    <h4 class="card-title">Guilt Leader</h4>
+                    <h6 class="card-category text-gray">CEO / {{guild.name}}</h6>
+                    <h4 class="card-title">{{guild.leaderUsername}}</h4>
                     <p class="card-description">
                         Let's conquer the world
                     </p>
@@ -32,7 +32,10 @@
                             </label>
                         </div> -->
                     </td>
-                    <td>BLUECURACAO</td>
+
+
+                    <td style="color:red;"><b>{{guild.name}} guild rules:</b></td>
+                    <br>
                     <!-- <td class="td-actions text-right">
                         <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                             <i class="material-icons">edit</i>
@@ -127,65 +130,31 @@
                                     Name
                                 </th>
                                 <th>
-                                    City
+                                    Country
                                 </th>
                                 <th>
-                                    Country
+                                    City
                                 </th>
                                 <th>
                                     XP
                                 </th>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let user of users">
                                 <tr>
                                     <td>
                                         1
                                     </td>
                                     <td>
-                                        Yehonatan Shyam
+                                        {{user.username}}
                                     </td>
                                     <td>
-                                        Arad
+                                        {{user.country}}
                                     </td>
                                     <td>
-                                        Romania
+                                        {{user.city}}
                                     </td>
                                     <td>
-                                        6176
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        William Cooper
-                                    </td>
-                                    <td>
-                                        Wien
-                                    </td>
-                                    <td>
-                                        Austria
-                                    </td>
-                                    <td>
-                                        5987
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        Doris Greene
-                                    </td>
-                                    <td>
-                                        Barcelona
-                                    </td>
-                                    <td>
-                                        Spain
-                                    </td>
-                                    <td>
-                                        5321
+                                        {{user.phoneNumber}}
                                     </td>
                                 </tr>
                             </tbody>

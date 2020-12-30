@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { showNotification } from '../helpers/notification'
 import { XpService } from "../services/xp.service";
+import { Router } from '@angular/router';
 
 declare const google: any;
 
@@ -23,7 +24,8 @@ export class MapsComponent implements OnInit {
     style = 'mapbox://styles/mapbox/streets-v11';
     lat = 37.75;
     lng = -122.41;
-    constructor(private xpService: XpService) { }
+    constructor(private xpService: XpService,
+                private router: Router,) { }
     ngOnInit() {
         showNotification('top','center', 'You cannot hide...')
 
@@ -64,6 +66,7 @@ export class MapsComponent implements OnInit {
 
     stopWorkout(){
         this.xpService.stopWorkout(5)
+        this.router.navigate(['/']);
     }
 
 }
