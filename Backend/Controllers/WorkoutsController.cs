@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         {
             // map model to entity
             var workout = _mapper.Map<Workout>(model);
-            workout.Date = DateTime.Now;
+            workout.Date = DateTime.Today;
 
             try
             {
@@ -96,6 +96,21 @@ namespace WebApi.Controllers
         {
             _workoutService.Delete(id);
             return Ok();
+        }
+
+        [HttpGet("dashboard")]
+        public IActionResult GetDashboard([FromBody]DashboardModel model)
+        {
+            model.DailyXp = _workoutService.GetTotalUserXPInOneDay(DateTime.Today, model.userId);
+            model.WeeklyXp = _workoutService.GetTotalUserXPInLast7Days(DateTime.Today, model.userId);
+            model.MonthlyXp = _workoutService.GetTotalUserXpInLastMounth(DateTime.Today, model.userId);
+            model.YearlyXp = _workoutService.GetTotalUserXPInOneDay(DateTime.Today, model.userId);
+            model.SevenDaysXp = _workoutService.GetUserXpInEachLast7Days(DateTime.Today, model.userId);
+            model.TwelveMonthsXp = _workoutService.GetUserXpInEachLast12Months(DateTime.Today, model.userId);
+
+            // var workout = _mapper.Map<Workout>(model);
+
+            return Ok(model);
         }
     }
 }
