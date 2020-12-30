@@ -135,5 +135,13 @@ namespace WebApi.Controllers
             _userService.Delete(id);
             return Ok();
         }
+
+        [HttpGet("in_guild/{guildId}")]
+        public IActionResult GetUsersFromGuild(int guildId)
+        {
+            var users = _userService.GetUsersFromGuild(guildId);
+            var model = _mapper.Map<IList<UserModel>>(users);
+            return Ok(model);
+        }
     }
 }

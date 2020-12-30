@@ -14,6 +14,7 @@ namespace WebApi.Services
         User Create(User user, string password);
         void Update(User user, string password = null);
         void Delete(int id);
+        IEnumerable<User> GetUsersFromGuild(int GuildId);
     }
 
     public class UserService : IUserService
@@ -138,6 +139,12 @@ namespace WebApi.Services
                 _context.SaveChanges();
             }
         }
+
+        public IEnumerable<User> GetUsersFromGuild(int GuildId)
+        {
+            return _context.Users.Where(u => u.GuildId.Equals(GuildId));
+        }
+
 
         // private helper methods
 
