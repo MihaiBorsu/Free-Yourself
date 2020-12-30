@@ -135,7 +135,6 @@ put:/guilds/{id}  // fields are optional
 	"City"
 	"Country"
 	"TotalXP"
-	"NewMemberId" : 1
 }
 
 delete:/guilds/{pk}
