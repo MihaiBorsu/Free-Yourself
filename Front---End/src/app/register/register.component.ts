@@ -44,7 +44,8 @@ export class RegisterComponent implements OnInit {
       res => {
         console.log("Register working");
         localStorage.setItem('isLogged', 'true')
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
+        // this.router.navigate(['/']);
 
       },
       err => {
