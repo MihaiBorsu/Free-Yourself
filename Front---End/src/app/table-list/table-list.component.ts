@@ -8,15 +8,27 @@ import { UserService } from '../services/user.service'
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-  guilds: {}
-  users: {}
+  guilds: any
+  users: any
+  guildsSize: number
+  usersSize: number
 
   constructor(private userService : UserService) { }
 
   ngOnInit() {
     this.userService.getGuilds().subscribe(
-      res => {
+      res => {       
         this.guilds = res
+
+      
+        let count = 1
+        for(let result of this.guilds){
+          result['rank']=count
+          count += 1
+       }
+
+       this.guilds = this.guilds.slice(0, 3)
+
         console.log(res)
         console.log("Working getGuilds")
         // showNotification('top','center', 'Between Titans')
@@ -28,7 +40,14 @@ export class TableListComponent implements OnInit {
     this.userService.getUserRanking().subscribe(
       res => {
         this.users = res
+        let count = 1
+        for(let result of this.users){
+          result['rank']=count
+          count += 1
+       }
+       this.users = this.users.slice(0, 3)
         console.log(res)
+        this.usersSize = Object.keys(res).length
         console.log("Working getUserRanking")
         showNotification('top','center', 'Between Titans')
       }, err => {

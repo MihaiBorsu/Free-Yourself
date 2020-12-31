@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaderResponse } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class XpService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private http:HttpClient) { }
 
   setCurrentWorkout(activity){
     let check = localStorage.getItem('workout')
@@ -57,7 +59,27 @@ export class XpService {
    if(xp == 0){
     console.log("error XP is 0")
    }
-   localStorage.removeItem('workout');
-   console.log(xp)
+   
+
+   this.sendWorkout(xp).subscribe(
+     res => {
+      localStorage.removeItem('workout');
+      console.log(xp)
+      this.router.navigate(['/']);
+     }, err =>{
+      console.log("error at workout")
+     }
+   )
+  
+  }
+
+  sendWorkout(xp){
+    let user = JSON.parse(localStorage.getItem('user'));
+    let req = {
+      userId: user.id,
+      XP : xp
+    }
+    console.log(req)
+     return this.http.post('http://localhost:4000/workouts/register', req);
   }
 }

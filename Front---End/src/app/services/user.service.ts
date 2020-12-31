@@ -12,17 +12,6 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  // updateProfile2(userData){
-  //   let body = {
-  //     "username": userData.username,
-  //     "email": userData.email,
-  //     "country": userData.country,
-  //     "city": userData.city,
-  //     "phoneNumber": userData.phoneNumber,
-  //     "description": userData.description
-  //   } 
-  //   return this.http.put('http://localhost:4000/users', body);
-  // }
 
   getProfile(){
     let user = <User>JSON.parse(localStorage.getItem('user'));
@@ -78,5 +67,9 @@ export class UserService {
     return this.http.post('http://localhost:4000/workouts/dashboard', req);
   }
 
+  getUsersInGuild(guildId){
+   // select user.guild.id
+   return this.http.get('http://localhost:4000/users/in_guild/' + guildId);
+  }
   
 }

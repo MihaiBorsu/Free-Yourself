@@ -21,16 +21,16 @@
                                         Leader
                                     </th>
                                     <th>
-                                        Members
+                                        Country
                                     </th>
                                     <th>
                                         XP
                                     </th>
                                 </thead>
-                                <tbody *ngFor="let guild of guilds">
+                                <tbody *ngFor="let guild of guilds" >
                                     <tr>
                                         <td>
-                                            1
+                                            {{guild.rank}}
                                         </td>
                                         <td>
                                             {{guild.name}}
@@ -79,7 +79,7 @@
                                 <tbody *ngFor="let user of users">
                                     <tr>
                                         <td>
-                                            1
+                                            {{user.rank}}
                                         </td>
                                         <td>
                                             {{user.username}}
@@ -91,7 +91,7 @@
                                             {{user.city}}
                                         </td>
                                         <td>
-                                            {{user.phoneNumber}}
+                                            {{user.totalXP}}
                                         </td>
                                     </tr>
                                 </tbody>
