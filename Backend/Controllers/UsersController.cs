@@ -80,11 +80,16 @@ namespace WebApi.Controllers
             // map model to entity
             var user = _mapper.Map<User>(model);
 
+            var userToAuthenticate = new AuthenticateModel();
+            userToAuthenticate.Username = model.Username;
+            userToAuthenticate.Password = model.Password;
+
             try
             {
                 // create user
                 _userService.Create(user, model.Password);
-                return Ok();
+                // return Ok();
+                return Authenticate(userToAuthenticate);
             }
             catch (AppException ex)
             {
