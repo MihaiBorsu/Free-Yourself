@@ -110,7 +110,7 @@ namespace WebApi.Controllers
             model.DailyXp = _workoutService.GetTotalUserXPInOneDay(DateTime.Today, model.userId);
             model.WeeklyXp = _workoutService.GetTotalUserXPInLast7Days(DateTime.Today, model.userId);
             model.MonthlyXp = _workoutService.GetTotalUserXpInLastMounth(DateTime.Today, model.userId);
-            model.YearlyXp = _workoutService.GetTotalUserXPInOneDay(DateTime.Today, model.userId);
+            model.YearlyXp = _workoutService.GetTotalUserXPInLastYear(DateTime.Today, model.userId);
             model.SevenDaysXp = _workoutService.GetUserXpInEachLast7Days(DateTime.Today, model.userId);
             model.TwelveMonthsXp = _workoutService.GetUserXpInEachLast12Months(DateTime.Today, model.userId);
 
