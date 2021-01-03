@@ -114,12 +114,28 @@ namespace WebApi.Controllers
         {
             // map model to entity and set id
             var user = _mapper.Map<User>(model);
+            var user_old = _mapper.Map<User>(model);
             user.Id = id;
 
             try
             {
+                // update old_guild reffrence with guild id fron db
+                user_old.GuildId = _userService.getUserGuildIdFromDB(user);
+                Console.WriteLine("OLD GUILD ID IS " + user_old.GuildId);
+
                 // update user
                 _userService.Update(user, model.Password);
+
+                // update new and old guild with total xp
+                // check if user has guild first
+                if (user.GuildId != null)
+                    _userService.UpdateGuildWithTotalXP(user);
+
+                if (user_old.GuildId != null)
+                    _userService.UpdateGuildWithTotalXP(user_old);
+                else
+                    Console.WriteLine("old guild total xp not updated");
+
                 return Ok();
             }
             catch (AppException ex)
