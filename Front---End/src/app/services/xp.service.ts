@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaderResponse } from "@angular/common/http";
+import * as invariant_1 from '@turf/invariant'
+import * as helpers_1 from '@turf/helpers'
 
 @Injectable({
   providedIn: 'root'
@@ -81,5 +83,24 @@ export class XpService {
     }
     console.log(req)
      return this.http.post('http://localhost:4000/workouts/register', req);
+  }
+
+  distance(from, to, options) {
+    if (options === void 0) { options = {}; }
+    var coordinates1 = invariant_1.getCoord(from);
+    var coordinates2 = invariant_1.getCoord(to);
+    var dLat = helpers_1.degreesToRadians((coordinates2[1] - coordinates1[1]));
+    var dLon = helpers_1.degreesToRadians((coordinates2[0] - coordinates1[0]));
+    var lat1 = helpers_1.degreesToRadians(coordinates1[1]);
+    var lat2 = helpers_1.degreesToRadians(coordinates2[1]);
+    var a = Math.pow(Math.sin(dLat / 2), 2) +
+        Math.pow(Math.sin(dLon / 2), 2) * Math.cos(lat1) * Math.cos(lat2);
+    return helpers_1.radiansToLength(2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)), options.units);
+  }
+
+  getPosition() {
+    return navigator.geolocation.getCurrentPosition((position) => {
+      return position;
+    });
   }
 }

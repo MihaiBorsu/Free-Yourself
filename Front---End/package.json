@@ -30,6 +30,7 @@
     "@angular/platform-server": "10.1.4",
     "@angular/router": "10.1.4",
     "@turf/along": "^6.0.1",
+    "@turf/distance": "^6.0.1",
     "@turf/turf": "^5.1.6",
     "@types/crypto-js": "^4.0.1",
     "@types/mapbox-gl": "^1.12.8",
@@ -55,6 +56,7 @@
     "popper.js": "1.16.1",
     "rxjs": "6.6.3",
     "rxjs-compat": "6.6.3",
+    "turf-distance": "^3.0.12",
     "web-animations-js": "2.3.2",
     "zone.js": "0.11.1"
   },
