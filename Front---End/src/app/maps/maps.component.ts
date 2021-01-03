@@ -29,23 +29,100 @@ export class MapsComponent implements OnInit {
     count:number
     currentPosition: any
 
+      lat: any
+      long: any
+      counting: any
+
         constructor(private xpService:XpService) { }
 
         ngOnInit() {
-          this.currentPosition = navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position)
-            console.log(typeof position.coords.latitude)
-            let lat = position.coords.latitude
-            let long = position.coords.longitude
+          let _this = this
 
-            Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken)
-            this.map = new mapboxgl.Map({
+          this.totalDistance = 0
+
+          this.getCurrentLocationInitial()
+
+          let time = this.xpService.getInterval()
+          console.log("Waiting time: " + time)
+          const source = interval(time);
+          this.subscription = source.subscribe(val => this.getCurrentLocation());
+
+
+      
+          
+              
+          //     console.log(this.xpService.distance(point1, point2, units));
+          //     console.log(this.xpService.distance(point2, point3, units));
+
+          //     //=points
+              
+          //      this.totalDistance = this.xpService.distance(point1, point2, units);
+          //      this.totalDistance = this.totalDistance + this.xpService.distance(point2, point3, units);
+          //      this.totalDistance = this.totalDistance + this.xpService.distance(point3, point4, units);
+          //      this.totalDistance = this.totalDistance + this.xpService.distance(point4, point5, units);
+
+
+          //     console.log("Distance is: ")
+          //     console.log(this.totalDistance)
+
+          //     this.count = 1
+         
+          //     //  const source = interval(1000);
+          //     //  const text = "Your Text Here";
+          //     //  this.subscription = source.subscribe(val => this.display(text));
+          //   });
+        }
+
+    finishWorkout(){
+        this.xpService.stopWorkout(this.totalDistance)
+    }
+
+    display(str){
+      this.count = this.count + 1;
+      console.log(str + " " + this.count);
+    }
+
+    getPosition() {
+      return navigator.geolocation.getCurrentPosition((position) => {
+        return position;
+      });
+    }
+
+    getCurrentLocation(){
+      let _this = this
+      navigator.geolocation.getCurrentPosition((position) => {
+        _this.counting = _this.counting + 1
+        _this.lat = position.coords.latitude.toFixed(4)
+        _this.long = position.coords.longitude.toFixed(4)
+
+       
+
+      });
+    }
+
+    getCurrentLocationInitial(){
+      let _this = this
+      navigator.geolocation.getCurrentPosition((position) => {
+        _this.counting = 1
+        _this.lat = position.coords.latitude.toFixed(4)
+        _this.long = position.coords.longitude.toFixed(4)
+
+        // _this.setMap(_this)
+        Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken)
+
+        console.log(_this.lat)
+        console.log(_this.long)
+
+        _this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lat, long],
+            center: [_this.long, _this.lat],
             zoom: 12
             });
+      });
+    }
 
+    setRoute(){
             let point1 = {
                 "type": "Feature",
                 "properties": {},
@@ -86,49 +163,27 @@ export class MapsComponent implements OnInit {
                   "coordinates": [46.1916, 21.3103]
                 }
               };
+
               let units = "kilometers";
               
               let points = {
                 "type": "FeatureCollection",
-                "features": [point1, point2]
+                "features": [point1, point2, point3, point4, point5]
               };
-              
-              console.log(this.xpService.distance(point1, point2, units));
-              console.log(this.xpService.distance(point2, point3, units));
-
-              //=points
-              
-               this.totalDistance = this.xpService.distance(point1, point2, units);
-               this.totalDistance = this.totalDistance + this.xpService.distance(point2, point3, units);
-               this.totalDistance = this.totalDistance + this.xpService.distance(point3, point4, units);
-               this.totalDistance = this.totalDistance + this.xpService.distance(point4, point5, units);
-
-
-              console.log("Distance is: ")
-              console.log(this.totalDistance)
-
-              this.count = 1
-         
-              //  const source = interval(1000);
-              //  const text = "Your Text Here";
-              //  this.subscription = source.subscribe(val => this.display(text));
-            });
-        }
-
-    finishWorkout(){
-        this.xpService.stopWorkout(this.totalDistance)
+              console.log(points.features)
+              console.log(units)
+              this.computeDistance(points.features, units)
     }
 
-    display(str){
-      this.count = this.count + 1;
-      console.log(str + " " + this.count);
+    computeDistance(pointArr, unit){
+        
+      for(let i=1; i< pointArr.length; i++){
+        this.totalDistance = this.totalDistance + this.xpService.distance(pointArr[i-1], pointArr[i], unit);
+      }
+
+      console.log(this.totalDistance.toFixed[1])
+
+      this.xpService.stopWorkout(this.totalDistance)
+
     }
-
-    getPosition() {
-      return navigator.geolocation.getCurrentPosition((position) => {
-        return position;
-      });
-    }
-
-
 }

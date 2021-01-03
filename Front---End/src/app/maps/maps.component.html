@@ -9,6 +9,13 @@
             <div class="col-md-4">
               <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="finishWorkout()">Finish Workout</button>
             </div>
+            <div class="col-md-4">
+                <p>Lattitude nr {{counting}} is: {{lat}}</p>
+                <p>Longitude: nr {{counting}} is: {{long}}</p>
+            </div>
+            <div class="col-md-4">
+                <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="setRoute()">Generate Workout</button>
+              </div>
          </div>
         <!-- <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="initializeMap()">Initialise</button>
         <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="moveMap()">Move</button> -->

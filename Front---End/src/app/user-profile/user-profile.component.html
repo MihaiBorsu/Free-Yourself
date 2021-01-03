@@ -75,16 +75,13 @@
                         <!-- <p class="card-description"  [(ngModel)]="user.description"></p> -->
                         <input name="description" matInput  type="text" [(ngModel)]="user.description">
                         <!-- <input class="card-description" type="text" [(ngModel)]="user.description" > -->
-                                <form #imageForm=ngForm (ngSubmit)="OnSubmit(Caption,Image)">
-                                  <div class="row">
-                                    <div class="input-field col s12">
-                                      <input type="text" #Caption ngModel name="Caption" id="Caption" required>
-                                      <label for="Caption">Caption</label>
-                                    </div>
-                                  </div>
+                        <button class="btn-large btn-submit" *ngIf="!updateUserProfile" (click)="setUpdateUserProfile(true)">Update Profile Picture</button>
+                                <form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)" *ngIf="updateUserProfile">
+                                
                                   <img [src]="imageUrl"  style="width:250px;height:200px">
                                   <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
                                   <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !imageForm.valid">Submit</button>
+                                  <button type="submit" class="btn-large btn-submit" (click)="setUpdateUserProfile(false)">Cancel</button>
                                 </form>
                     </div>
                 </div>

@@ -13,25 +13,24 @@ export class StolenVehiclesComponent implements OnInit {
   register: boolean
   update: boolean
   updateStolenVehicle: {}
+  userId: number
 
   constructor(private userService : UserService) { }
 
   ngOnInit(): void {
+  this.userId = this.userService.getUserId();
+
     this.register = false
     this.update = false
-    // this.stolenVehicle = {    username: 'dsd',
-    //                 phoneNumber: 'dsd',
-    //                 email: 'dsd',
-    //                 city: 'dsd',
-    //                 country: 'dsd',
-    //                 description: 'dsd'
-    //               }
-    this.stolenVehicle = {    serialNumber: 'dsd',
-                              profileContact: 'dsd',
-                              date: 'dsd',
-                              city: 'dsd',
-                              country: 'dsd',
-                              description: 'dsd'
+    
+    this.stolenVehicle = {    serialNumber: '',
+                              profileContact: '',
+                              date: '',
+                              city: '',
+                              country: '',
+                              userId: '',
+                              type:'',
+                              photoLink: ''
   }
     this.userService.getVehicles().subscribe(
       res => {
@@ -86,15 +85,23 @@ export class StolenVehiclesComponent implements OnInit {
   }
 
   deleteVehicle(id){
-    this.userService.deleteVehicle(id).subscribe(
-      res => {
-        console.log(res)
-        console.log("Working getVehicle")
-        showNotification('top','center', 'Deleted succesfully')
-        this.ngOnInit();
-      }, err => {
-        console.log("Error at getVehicle")
-      })
+      this.userService.deleteVehicle(id).subscribe(
+        res => {
+          console.log(res)
+          console.log("Working getVehicle")
+          showNotification('top','center', 'Deleted succesfully')
+          this.ngOnInit();
+        }, err => {
+          console.log("Error at getVehicle")
+        })
+  }
+
+  checkIfMine(vehicleUserId){
+    if(parseInt(vehicleUserId) == this.userId){
+      return true
+    } else{
+      return false
+    }
   }
 
 }

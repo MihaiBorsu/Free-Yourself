@@ -43,6 +43,8 @@ export class UserService {
   }
   
   registerVehicle(vehicle){
+    let user = <User>JSON.parse(localStorage.getItem('user'));
+    vehicle.userId = user.id
     // select user.guild.id
     console.log(vehicle)
     return this.http.post('http://localhost:4000/vehicles/register', vehicle);
@@ -70,6 +72,11 @@ export class UserService {
   getUsersInGuild(guildId){
    // select user.guild.id
    return this.http.get('http://localhost:4000/users/in_guild/' + guildId);
+  }
+
+  getUserId(){
+    let user = <User>JSON.parse(localStorage.getItem('user'));
+    return parseInt(user.id)
   }
   
 }

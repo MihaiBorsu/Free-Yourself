@@ -25,6 +25,7 @@ export class XpService {
   }
 
   stopWorkout(distance){
+    console.log("XPServiceArrive" + distance)
     //if km take care of 1.45 or use meters
     let activity = localStorage.getItem('workout')
     let xp = 0
@@ -62,6 +63,9 @@ export class XpService {
     console.log("error XP is 0")
    }
    
+   console.log("FInal XP " + xp)
+   xp = Math.floor( xp )
+   console.log("Final Xp smaller " + xp)
 
    this.sendWorkout(xp).subscribe(
      res => {
@@ -102,5 +106,41 @@ export class XpService {
     return navigator.geolocation.getCurrentPosition((position) => {
       return position;
     });
+  }
+
+    getInterval(){
+      let activity = localStorage.getItem('workout')
+      let time = 0
+      switch(activity) { 
+        case 'walk': { 
+          time = 10000
+          break; 
+        } 
+        case 'jogging': { 
+          time = 9000 
+          break; 
+        }
+        case 'run': { 
+          time = 8000  
+          break; 
+        } 
+        case 'bike': { 
+          time = 3000  
+          break; 
+        } 
+        case 'skateboard': { 
+          time = 6000 
+          break; 
+        } 
+        case 'rolls': { 
+          time = 5000   
+          break; 
+        } 
+        default: { 
+          time = 0   
+          break; 
+        } 
+    }
+    return time
   }
 }

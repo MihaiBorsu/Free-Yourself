@@ -35,7 +35,7 @@
                             <tbody *ngFor="let vehicle of vehicles">
                                 <tr>
                                     <td>
-                                        {{vehicle.id}}
+                                        {{vehicle.type}}
                                     </td>
                                     <td>
                                         {{vehicle.country}}
@@ -50,15 +50,15 @@
                                         {{vehicle.serialNumber}}
                                     </td>
                                     <td>
-                                        {{vehicle.description}}
+                                        {{vehicle.photoLink}}
                                     </td>
                                     <td>
                                         {{vehicle.profileContact}}
                                     </td>
                                     <td>
-                                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="deleteVehicle(vehicle.id)">Delete</button>       
+                                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" *ngIf="checkIfMine(vehicle.userId)" (click)="deleteVehicle(vehicle.id)">Delete</button>       
 
-                                        <button mat-raised-button type="submit" class="btn btn-warning pull-right" (click)="updateObject(vehicle)">Update</button>       
+                                        <button mat-raised-button type="submit" class="btn btn-warning pull-right" *ngIf="checkIfMine(vehicle.userId)" (click)="updateObject(vehicle)">Update</button>       
                                     </td>
                                 </tr>
                             </tbody>
@@ -79,46 +79,52 @@
                         <form>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="username">Country</label><br>
+                                    <label for="type">Type</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="username" matInput placeholder="Username" [(ngModel)]="stolenVehicle.serialNumber">
+                                        <input name="type" matInput placeholder="Stolen Vehicle" type="text" [(ngModel)]="stolenVehicle.type">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-5">
-                                    <label for="phoneNumber">City</label><br>
+                                <div class="col-md-4">
+                                    <label for="date">Date</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="phoneNumber" matInput placeholder="Phone number" [(ngModel)]="stolenVehicle.profileContact">
+                                        <input name="date" matInput placeholder="Date" type="text" [(ngModel)]="stolenVehicle.date">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="country">Country</label><br>
+                                    <mat-form-field class="example-full-width">
+                                        <input name="country" matInput placeholder="Country" [(ngModel)]="stolenVehicle.country">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="city">City</label><br>
+                                    <mat-form-field class="example-full-width">
+                                        <input name="city" matInput placeholder="city" [(ngModel)]="stolenVehicle.city">
                                     </mat-form-field>
                                 </div>
 
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="phoneNumber">Date</label><br>
-                                    <mat-form-field class="example-full-width">
-                                        <input name="email" matInput placeholder="Email address" type="email" [(ngModel)]="stolenVehicle.date">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
-                                    <label for="phoneNumber">SerialNumber</label><br>
+                                    <label for="serialNumber">SerialNumber</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="city" matInput placeholder="City" type="text" [(ngModel)]="stolenVehicle.city">
+                                        <input name="serialNumber" matInput placeholder="serialNumber" type="text" [(ngModel)]="stolenVehicle.serialNumber">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="phoneNumber">Photo</label><br>
+                                    <label for="photoLink">Photo</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="country" matInput placeholder="Country" type="text" [(ngModel)]="stolenVehicle.country">
+                                        <input name="photoLink" matInput placeholder="photoLink" type="text" [(ngModel)]="stolenVehicle.photoLink">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="phoneNumber">Contact</label><br>
+                                    <label for="profileContact">Contact</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <textarea name="description" matInput placeholder="Lamborghini Boy, Dog Lover, Travel addict." [(ngModel)]="stolenVehicle.description"></textarea>
+                                        <textarea name="profileContact" matInput placeholder="Phone Number" [(ngModel)]="stolenVehicle.profileContact"></textarea>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -134,53 +140,59 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Add Stolen Vehicle</h4>
+                        <h4 class="card-title">Update {{updateStolenVehicle.type}} Vehicle</h4>
                         <p class="card-category">Complete your profile</p>
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="username">Country</label><br>
+                                    <label for="type">Type</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="username" matInput placeholder="Username" [(ngModel)]="updateStolenVehicle.serialNumber">
+                                        <input name="type" matInput placeholder="Stolen Vehicle" type="text" [(ngModel)]="updateStolenVehicle.type">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-5">
-                                    <label for="phoneNumber">City</label><br>
+                                <div class="col-md-4">
+                                    <label for="date">Date</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="phoneNumber" matInput placeholder="Phone number" [(ngModel)]="updateStolenVehicle.profileContact">
+                                        <input name="date" matInput placeholder="Date" type="text" [(ngModel)]="updateStolenVehicle.date">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="country">Country</label><br>
+                                    <mat-form-field class="example-full-width">
+                                        <input name="country" matInput placeholder="Country" [(ngModel)]="updateStolenVehicle.country">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="city">City</label><br>
+                                    <mat-form-field class="example-full-width">
+                                        <input name="city" matInput placeholder="city" [(ngModel)]="updateStolenVehicle.city">
                                     </mat-form-field>
                                 </div>
 
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="phoneNumber">Date</label><br>
-                                    <mat-form-field class="example-full-width">
-                                        <input name="email" matInput placeholder="Email address" type="email" [(ngModel)]="updateStolenVehicle.date">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
-                                    <label for="phoneNumber">SerialNumber</label><br>
+                                    <label for="serialNumber">SerialNumber</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="city" matInput placeholder="City" type="text" [(ngModel)]="updateStolenVehicle.city">
+                                        <input name="serialNumber" matInput placeholder="serialNumber" type="text" [(ngModel)]="updateStolenVehicle.serialNumber">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="phoneNumber">Photo</label><br>
+                                    <label for="photoLink">Photo</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <input name="country" matInput placeholder="Country" type="text" [(ngModel)]="updateStolenVehicle.country">
+                                        <input name="photoLink" matInput placeholder="photoLink" type="text" [(ngModel)]="updateStolenVehicle.photoLink">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="phoneNumber">Contact</label><br>
+                                    <label for="profileContact">Contact</label><br>
                                     <mat-form-field class="example-full-width">
-                                        <textarea name="description" matInput placeholder="Lamborghini Boy, Dog Lover, Travel addict." [(ngModel)]="updateStolenVehicle.description"></textarea>
+                                        <textarea name="profileContact" matInput placeholder="Phone Number" [(ngModel)]="updateStolenVehicle.profileContact"></textarea>
                                     </mat-form-field>
                                 </div>
                             </div>
