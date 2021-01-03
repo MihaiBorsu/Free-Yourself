@@ -145,7 +145,7 @@ export class DashboardComponent implements OnInit {
  
        /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
  
-       this.dashboard.twelveMonthsXp = [200,320,210,380,60,240,30,200,320,210,380,60,240,30]
+       this.dashboard.twelveMonthsXp = [200,320,210,380,60,240,30,200,320,210,380,60]
 
        var datawebsiteViewsChart = {
          labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],

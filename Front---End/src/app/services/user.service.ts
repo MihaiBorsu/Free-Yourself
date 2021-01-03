@@ -78,5 +78,10 @@ export class UserService {
     let user = <User>JSON.parse(localStorage.getItem('user'));
     return parseInt(user.id)
   }
+
+  addGuild(body){
+    console.log(body)
+    return this.http.post('http://localhost:4000/guilds/register', body);
+  }
   
 }

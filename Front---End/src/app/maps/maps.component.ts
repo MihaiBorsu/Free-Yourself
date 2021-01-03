@@ -28,6 +28,19 @@ export class MapsComponent implements OnInit {
     subscription: Subscription;
     count:number
     currentPosition: any
+    
+
+    arrayOfCoordinates: {
+            type: string,
+            properties: {},
+            geometry: {
+              type: string,
+              coordinates: number[]
+            }
+         }[]
+
+        //  arrayOfCoordinates:any
+    
 
       lat: any
       long: any
@@ -38,6 +51,8 @@ export class MapsComponent implements OnInit {
         ngOnInit() {
           let _this = this
 
+          this.arrayOfCoordinates = []
+
           this.totalDistance = 0
 
           this.getCurrentLocationInitial()
@@ -47,34 +62,12 @@ export class MapsComponent implements OnInit {
           const source = interval(time);
           this.subscription = source.subscribe(val => this.getCurrentLocation());
 
-
-      
-          
-              
-          //     console.log(this.xpService.distance(point1, point2, units));
-          //     console.log(this.xpService.distance(point2, point3, units));
-
-          //     //=points
-              
-          //      this.totalDistance = this.xpService.distance(point1, point2, units);
-          //      this.totalDistance = this.totalDistance + this.xpService.distance(point2, point3, units);
-          //      this.totalDistance = this.totalDistance + this.xpService.distance(point3, point4, units);
-          //      this.totalDistance = this.totalDistance + this.xpService.distance(point4, point5, units);
-
-
-          //     console.log("Distance is: ")
-          //     console.log(this.totalDistance)
-
-          //     this.count = 1
-         
-          //     //  const source = interval(1000);
-          //     //  const text = "Your Text Here";
-          //     //  this.subscription = source.subscribe(val => this.display(text));
-          //   });
         }
 
     finishWorkout(){
-        this.xpService.stopWorkout(this.totalDistance)
+      console.log(this.arrayOfCoordinates)
+      this.computeDistance(this.arrayOfCoordinates, "kilometers")
+        // this.xpService.stopWorkout(this.totalDistance)
     }
 
     display(str){
@@ -95,7 +88,16 @@ export class MapsComponent implements OnInit {
         _this.lat = position.coords.latitude.toFixed(4)
         _this.long = position.coords.longitude.toFixed(4)
 
-       
+
+        let point = {
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "Point",
+            coordinates: [_this.lat, _this.long]
+          }
+        }
+       _this.arrayOfCoordinates.push(point)
 
       });
     }

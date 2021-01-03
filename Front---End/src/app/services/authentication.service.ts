@@ -47,15 +47,15 @@ export class AuthenticationService {
     console.log(body)
     // return this.http.post('/users/register', formData)
     // return this.http.post(this.rootUrl + 'users/register', formData)
-    return this.http.post('http://localhost:4000/users/register', body)
-  //   .pipe(map(user => {
-  //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-  //     localStorage.setItem('user', JSON.stringify(user));
-  //     localStorage.setItem('currentUser', user.username)
-  //     // localStorage.setItem('isLogged', 'true')
-  //     // this.navbar = true
-  //     return user;
-  // }));
+    return this.http.post<User>('http://localhost:4000/users/register', body)
+    .pipe(map(user => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('currentUser', user.username)
+      // localStorage.setItem('isLogged', 'true')
+      // this.navbar = true
+      return user;
+  }));
 
   //need to return username and token
   }
