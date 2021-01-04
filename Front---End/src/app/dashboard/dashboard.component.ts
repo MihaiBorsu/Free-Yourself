@@ -92,8 +92,10 @@ export class DashboardComponent implements OnInit {
        
       //  this.dashboard.sevenDaysXp = [20,32,21,38,6,24,3]
  
+      let weeklabels = this.getWeekDays()
+
        const dataDailySalesChart: any = {
-         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+         labels: weeklabels,
          series: [this.dashboard.sevenDaysXp.reverse()]
      };
  
@@ -140,8 +142,9 @@ export class DashboardComponent implements OnInit {
  
       //  this.dashboard.twelveMonthsXp = [200,320,210,380,60,240,30,200,320,210,380,60]
 
+      let monthlabels = this.getMonths()
        var datawebsiteViewsChart = {
-         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+         labels: monthlabels,
          series: [
           this.dashboard.twelveMonthsXp.reverse()
  
@@ -181,6 +184,34 @@ export class DashboardComponent implements OnInit {
 
   workout(activity){
     this.xpService.setCurrentWorkout(activity)
+  }
+
+  getWeekDays(){
+    let labels = ['S','M', 'T', 'W', 'T', 'F', 'S', 'S','M', 'T', 'W', 'T', 'F', 'S']
+    let newLabels = []
+    let today = new Date().getDay();
+
+    for(let i=0; i<7; i++){
+      newLabels.push(labels[today])
+      today = today + 1
+    }
+
+    return newLabels.reverse();
+  }
+
+  getMonths(){
+    let labels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+    let newLabels = []
+    let month = new Date().getMonth();
+
+    // console.log(month)
+    for(let i=0; i<12; i++){
+      newLabels.push(labels[month])
+      month = month + 1
+    }
+
+    // return null
+    return newLabels.reverse();
   }
 
 }
