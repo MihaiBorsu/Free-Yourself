@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service'
 })
 export class StolenVehiclesComponent implements OnInit {
   vehicles: {}
-  stolenVehicle: {}
+  stolenVehicle: any
   register: boolean
   update: boolean
   updateStolenVehicle: {}
@@ -52,6 +52,7 @@ export class StolenVehiclesComponent implements OnInit {
   }
 
   registerVehicle(){
+    this.stolenVehicle.photoLink = 'url'
     this.userService.registerVehicle(this.stolenVehicle).subscribe(
     res => {
       this.vehicles = res

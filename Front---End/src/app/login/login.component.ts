@@ -5,7 +5,7 @@ import { AuthenticationService } from '../services/authentication.service'
 import * as bcrypt from 'bcryptjs';
 import {EncrDecrService} from '../services/encr-decr.service';
 import {NavbarComponent} from '../components/navbar/navbar.component';
-
+import { showNotification } from '../helpers/notification'
 
 @Component({
   selector: 'app-login',
@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       err => {
-        console.log("Login not working");     
+        console.log("Login not working");
+        showNotification('top','center', 'Wrong Credentials. Try again!')  
       }
     )
   }

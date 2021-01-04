@@ -167,13 +167,14 @@ export class MapsComponent implements OnInit {
                 "type": "FeatureCollection",
                 "features": [point1, point2, point3, point4, point5]
               };
-              console.log(points.features)
-              console.log(units)
+
               this.computeDistance(points.features, units)
     }
 
     computeDistance(pointArr, unit){
         
+      console.log(pointArr)
+
       for(let i=1; i< pointArr.length; i++){
         this.totalDistance = this.totalDistance + this.xpService.distance(pointArr[i-1], pointArr[i], unit);
       }
