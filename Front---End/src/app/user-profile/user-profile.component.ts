@@ -17,18 +17,43 @@ export class UserProfileComponent implements OnInit {
   user: any
   encodedImg: any
   updateUserProfile: boolean
+  cars: any
+  guildList: any
 
   constructor(private imageService : UploadImageService,
               private userService : UserService) { }
 
   ngOnInit() {
     this.updateUserProfile = false
+    this.cars = ['Volvo', 'Auid', 'BMW']
+
+    this.user = {
+      username: '',
+      country: '',
+      city: '',
+      description: '',
+      phoneNumber: '',
+      email: '',
+      guildId: '',
+    }
+
     this.userService.getProfile().subscribe(
       res => {
-        console.log("Hello")
-        console.log(res)
         this.user = res
-        showNotification('top','center', 'Are you good enough?')
+        if(this.user.guildId == null){
+          this.user.guildId = "Choose a Guild"
+        }
+
+        this.userService.getAllGuilds().subscribe( 
+          res => {
+            this.guildList = res
+            // console.log( this.guildList)
+          }, err => {
+            console.log("Error at getGuilds from User-Profile")
+          }
+        )
+
+        showNotification('bottom','left', 'Is your profile good enough?')
       }, err => {
 
       }
@@ -66,20 +91,6 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  // OnSubmit(Caption, Image){
-  //   console.log(Caption.value)
-  //   console.log(this.fileToUpload)
-  //  this.imageService.postFile(Caption.value,this.fileToUpload).subscribe(
-  //    data =>{
-  //      console.log('done');
-  //      Caption.value = null;
-  //      Image.value = null;
-  //      this.imageUrl = "/assets/img/default-image.png";
-  //    }
-  //  );
-  // }
-
-  
   OnSubmit(Image){
     console.log(this.fileToUpload)
     let _this=this
@@ -94,11 +105,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   update(){
-    this.user.guildId = parseInt(this.user.guildId)
     this.userService.updateProfile(this.user).subscribe(res => {
-      showNotification('top','left', 'Update worked?')
+      showNotification('top','center', 'User Profile updated!')
     }, err => {
       console.log("Error at updating profile")
     }) 
+  }
+
+  changeGuild(id){
+    this.user.guildId = id
   }
 }

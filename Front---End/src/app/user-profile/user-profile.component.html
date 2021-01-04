@@ -30,9 +30,14 @@
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input name="guildId" matInput placeholder="GuildId" type="email" [(ngModel)]="user.guildId">
-                                    </mat-form-field>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{user.guildId}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngFor="let car of cars">
+                                        <a class="dropdown-item" (click)="changeGuild(guild.id)" *ngFor="let guild of guildList">{{guild.name}}</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -72,9 +77,7 @@
                         <h4 class="card-title">{{user.username}}</h4>
                         <h6 class="card-category text-gray">{{user.country}} / {{user.city}}</h6>
                         
-                        <!-- <p class="card-description"  [(ngModel)]="user.description"></p> -->
                         <input name="description" matInput  type="text" [(ngModel)]="user.description">
-                        <!-- <input class="card-description" type="text" [(ngModel)]="user.description" > -->
                         <button class="btn-large btn-submit" *ngIf="!updateUserProfile" (click)="setUpdateUserProfile(true)">Update Profile Picture</button>
                                 <form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)" *ngIf="updateUserProfile">
                                 

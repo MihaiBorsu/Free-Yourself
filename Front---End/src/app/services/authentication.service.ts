@@ -8,15 +8,12 @@ import { User } from "../models/user";
 })
 export class AuthenticationService {
 
-  // readonly rootUrl = 'http://localhost:4000'
-  // navbar = false
   obj: User
 
   constructor(private http:HttpClient) { }
 
 
   login(formData){
-    console.log(typeof formData);
     let body = {
       "username": formData.username,
       "password": formData.password
@@ -34,7 +31,6 @@ export class AuthenticationService {
   }
 
   register(formData){
-    console.log(formData);
     let body = {
       "username": formData.username,
       "email": formData.email,
@@ -44,7 +40,6 @@ export class AuthenticationService {
       "password": formData.password,
       "description": formData.description
     } 
-    console.log(body)
     // return this.http.post('/users/register', formData)
     // return this.http.post(this.rootUrl + 'users/register', formData)
     return this.http.post<User>('http://localhost:4000/users/register', body)

@@ -18,7 +18,7 @@ export class NotificationsComponent implements OnInit {
           message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
 
       },{
-          type: type[color],
+          type: 'success',
           timer: 4000,
           placement: {
               from: from,

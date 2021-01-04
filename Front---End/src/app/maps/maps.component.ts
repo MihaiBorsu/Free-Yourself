@@ -65,9 +65,7 @@ export class MapsComponent implements OnInit {
         }
 
     finishWorkout(){
-      console.log(this.arrayOfCoordinates)
       this.computeDistance(this.arrayOfCoordinates, "kilometers")
-        // this.xpService.stopWorkout(this.totalDistance)
     }
 
     display(str){
@@ -111,9 +109,6 @@ export class MapsComponent implements OnInit {
 
         // _this.setMap(_this)
         Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken)
-
-        console.log(_this.lat)
-        console.log(_this.long)
 
         _this.map = new mapboxgl.Map({
             container: 'map',
@@ -182,8 +177,6 @@ export class MapsComponent implements OnInit {
       for(let i=1; i< pointArr.length; i++){
         this.totalDistance = this.totalDistance + this.xpService.distance(pointArr[i-1], pointArr[i], unit);
       }
-
-      console.log(this.totalDistance.toFixed[1])
 
       this.xpService.stopWorkout(this.totalDistance)
 

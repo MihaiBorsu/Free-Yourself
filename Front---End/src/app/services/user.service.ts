@@ -21,7 +21,6 @@ export class UserService {
   updateProfile(userData){
     let user = <User>JSON.parse(localStorage.getItem('user'));
     delete userData.username
-    console.log(userData)
     return this.http.put('http://localhost:4000/users/' + user.id, userData);
   }
 
@@ -38,27 +37,22 @@ export class UserService {
   }
 
   getGuild(id){
-    // select user.guild.id
     return this.http.get('http://localhost:4000/guilds/' + id);
   }
   
   registerVehicle(vehicle){
     let user = <User>JSON.parse(localStorage.getItem('user'));
     vehicle.userId = user.id
-    // select user.guild.id
-    console.log(vehicle)
     return this.http.post('http://localhost:4000/vehicles/register', vehicle);
   }
   
   updateVehicle(id, vehicle){
     // select user.guild.id
-    console.log(id)
     return this.http.put('http://localhost:4000/vehicles/' + id, vehicle);
   }
 
   deleteVehicle(id){
     // select user.guild.id
-    console.log(id)
     return this.http.delete('http://localhost:4000/vehicles/' + id);
   }
 
@@ -70,7 +64,6 @@ export class UserService {
   }
 
   getUsersInGuild(guildId){
-   // select user.guild.id
    return this.http.get('http://localhost:4000/users/in_guild/' + guildId);
   }
 
@@ -80,8 +73,10 @@ export class UserService {
   }
 
   addGuild(body){
-    console.log(body)
     return this.http.post('http://localhost:4000/guilds/register', body);
   }
   
+  getAllGuilds(){
+    return this.http.get('http://localhost:4000/guilds');
+  }
 }

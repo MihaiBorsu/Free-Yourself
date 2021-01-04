@@ -44,7 +44,12 @@
             </tbody>
         </table>
     </div>
+    <div class="col-md-12">
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="removeFromGuild()">Leave Guild</button>
+    </div>
 </div>
+
+
         <div class="col-md-12">
             <div class="card card-plain">
                 <div class="card-header card-header-danger">
@@ -95,6 +100,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
     <div class="container-fluid" *ngIf="!inGuild">
         <div class="row">
@@ -105,7 +111,7 @@
                         <h4 class="card-category text-gray">Not enrolled in any Guild</h4>
                         <h2 class="card-title">wow</h2>
                         <h4 class="card-title">Do you want to change the world?</h4>
-                        <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="displayGuildCreate()">Create Guild</button>
+                        <button mat-raised-button class="btn btn-danger btn-block btn-lg" (click)="displayGuildCreate()" *ngIf="!createGuildBool">Create Guild</button>
                     </div>
                 </div>
             </div>
@@ -122,22 +128,22 @@
                     <form>
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="name">SerialNumber</label><br>
-                                <mat-form-field class="example-full-width">
-                                    <input name="name" matInput placeholder="serialNumber" type="text" [(ngModel)]="newGuild.name">
-                                </mat-form-field>
+                                <label for="name">Name</label><br>
+                           
+                                    <input name="name" matInput placeholder="guild name" type="text" [(ngModel)]="newGuild.name">
+                            
                             </div>
                             <div class="col-md-4">
-                                <label for="city">Photo</label><br>
-                                <mat-form-field class="example-full-width">
-                                    <input name="city" matInput placeholder="photoLink" type="text" [(ngModel)]="newGuild.city">
-                                </mat-form-field>
+                                <label for="city">Country</label><br>
+                             
+                                    <input name="city" matInput placeholder="country" type="text" [(ngModel)]="newGuild.city">
+                            
                             </div>
                             <div class="col-md-4">
-                                <label for="country">Photo</label><br>
-                                <mat-form-field class="example-full-width">
-                                    <input name="country" matInput placeholder="photoLink" type="text" [(ngModel)]="newGuild.country">
-                                </mat-form-field>
+                                <label for="country">City</label><br>
+                           
+                                    <input name="country" matInput placeholder="city" type="text" [(ngModel)]="newGuild.country">
+ 
                             </div>
                         </div>                  
                         <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="cancelAddingGuild()">Cancel</button>

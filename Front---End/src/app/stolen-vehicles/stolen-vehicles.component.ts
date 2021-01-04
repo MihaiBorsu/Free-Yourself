@@ -35,9 +35,7 @@ export class StolenVehiclesComponent implements OnInit {
     this.userService.getVehicles().subscribe(
       res => {
         this.vehicles = res
-        console.log(res)
-        console.log("Working getVehicle")
-        showNotification('top','center', 'Lets go hunting')
+        showNotification('bottom','left', 'Lets go hunting in after Stolen Vehicles!')
       }, err => {
         console.log("Error at getVehicle")
       }
@@ -57,9 +55,7 @@ export class StolenVehiclesComponent implements OnInit {
     this.userService.registerVehicle(this.stolenVehicle).subscribe(
     res => {
       this.vehicles = res
-      console.log(res)
-      console.log("Working getVehicle")
-      showNotification('top','center', 'Lets go hunting')
+      showNotification('top','center', 'Stolen Vehicle registered!')
       this.ngOnInit();
     }, err => {
       console.log("Error at getVehicle")
@@ -74,22 +70,17 @@ export class StolenVehiclesComponent implements OnInit {
   updateVehicle(id){
     this.userService.updateVehicle(id, this.updateStolenVehicle).subscribe(
       res => {
-        console.log(res)
-        console.log("Working getVehicle")
-        showNotification('top','center', 'Updated succesfully')
+        showNotification('top','center', 'Stolen Vehicle updated')
         this.ngOnInit();
       }, err => {
         console.log("Error at getVehicle")
       })
-    console.log(id)
   }
 
   deleteVehicle(id){
       this.userService.deleteVehicle(id).subscribe(
         res => {
-          console.log(res)
-          console.log("Working getVehicle")
-          showNotification('top','center', 'Deleted succesfully')
+          showNotification('top','center', 'Stolen Vehicle deleted')
           this.ngOnInit();
         }, err => {
           console.log("Error at getVehicle")

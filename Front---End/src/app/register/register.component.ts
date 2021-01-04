@@ -37,16 +37,12 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     let hash = this.crypt.set("123456789#@!", this.registerForm.value.password)
-    console.log(hash)
     this.registerForm.value.password = hash
 
     this.auth.register(this.registerForm.value).subscribe(
       res => {
-        console.log("Register working");
-        console.log(res)
         localStorage.setItem('isLogged', 'true')
         this.router.navigate(['/login']);
-        // this.router.navigate(['/']);
         this.router.navigate(['/']);
       },
       err => {

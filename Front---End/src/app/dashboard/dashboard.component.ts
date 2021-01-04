@@ -13,15 +13,6 @@ import { UserService } from '../services/user.service'
 })
 export class DashboardComponent implements OnInit {
 
-  // dashboard:{
-  //   userId: number,
-  //   dailyXp: number,
-  //   weeklyXp: number,
-  //   monthlyXp: number,
-  //   yearlyXp: number,
-  //   sevenDaysXp: number[],
-  //   twelveMonthsXp: number[]
-  // }
   dashboard: any
 
   constructor(private xpService: XpService,
@@ -85,31 +76,33 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user'));
+    this.dashboard = {
+      dailyXp: 0,
+      weeklyXp: 0,
+      monthlyXp: 0,
+      yearlyXp: 0
+    }
     this.userService.getDashboard(user.id).subscribe(
       res => {
         this.dashboard = res
-        console.log(res)
-        console.log("Working getGuilds")
         // showNotification('top','center', 'Between Titans')
       
        /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-       showNotification('top','center', 'Move you body!')
+       showNotification('bottom','left', 'Move you body and check your result in Dashboard!')
        
-       this.dashboard.sevenDaysXp = [20,32,21,38,6,24,3]
+      //  this.dashboard.sevenDaysXp = [20,32,21,38,6,24,3]
  
        const dataDailySalesChart: any = {
          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
          series: [this.dashboard.sevenDaysXp.reverse()]
      };
-
-     console.log(dataDailySalesChart.series)
  
       const optionsDailySalesChart: any = {
            lineSmooth: Chartist.Interpolation.cardinal({
                tension: 0
            }),
            low: 0,
-           high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+           high: 200, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
        }
  
@@ -145,7 +138,7 @@ export class DashboardComponent implements OnInit {
  
        /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
  
-       this.dashboard.twelveMonthsXp = [200,320,210,380,60,240,30,200,320,210,380,60]
+      //  this.dashboard.twelveMonthsXp = [200,320,210,380,60,240,30,200,320,210,380,60]
 
        var datawebsiteViewsChart = {
          labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
@@ -159,7 +152,7 @@ export class DashboardComponent implements OnInit {
                showGrid: false
            },
            low: 0,
-           high: 400,
+           high: 500,
            chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
        };
        var responsiveOptions: any[] = [
@@ -187,7 +180,6 @@ export class DashboardComponent implements OnInit {
   }
 
   workout(activity){
-    console.log(activity)
     this.xpService.setCurrentWorkout(activity)
   }
 

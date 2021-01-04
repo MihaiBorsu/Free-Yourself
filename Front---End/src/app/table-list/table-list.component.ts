@@ -19,8 +19,7 @@ export class TableListComponent implements OnInit {
     this.userService.getGuilds().subscribe(
       res => {       
         this.guilds = res
-
-      
+   
         let count = 1
         for(let result of this.guilds){
           result['rank']=count
@@ -29,8 +28,6 @@ export class TableListComponent implements OnInit {
 
        this.guilds = this.guilds.slice(0, 3)
 
-        console.log(res)
-        console.log("Working getGuilds")
         // showNotification('top','center', 'Between Titans')
       }, err => {
         console.log("Error at getGuilds")
@@ -45,11 +42,9 @@ export class TableListComponent implements OnInit {
           result['rank']=count
           count += 1
        }
-       this.users = this.users.slice(0, 3)
-        console.log(res)
+       this.users = this.users.slice(0, 5)
         this.usersSize = Object.keys(res).length
-        console.log("Working getUserRanking")
-        showNotification('top','center', 'Between Titans')
+        showNotification('bottom','left', 'Between Titans')
       }, err => {
         console.log("Error at getGuilds")
       }

@@ -25,8 +25,6 @@ export class XpService {
   }
 
   stopWorkout(distance){
-    console.log("XPServiceArrive" + distance)
-    //if km take care of 1.45 or use meters
     let activity = localStorage.getItem('workout')
     let xp = 0
     switch(activity) { 
@@ -60,23 +58,22 @@ export class XpService {
       } 
    } 
    if(xp == 0){
-    console.log("error XP is 0")
-   }
-   
-   console.log("FInal XP " + xp)
-   xp = Math.floor( xp )
-   console.log("Final Xp smaller " + xp)
+    console.log("Error XP is 0, this workout will not be added!")
+    localStorage.removeItem('workout');
+    this.router.navigate(['/']);
+   } else {    
+      xp = Math.floor( xp )
+      console.log("Final Xp: " + xp)
 
-   this.sendWorkout(xp).subscribe(
-     res => {
-      localStorage.removeItem('workout');
-      console.log(xp)
-      this.router.navigate(['/']);
-     }, err =>{
-      console.log("error at workout")
-     }
-   )
-  
+      this.sendWorkout(xp).subscribe(
+        res => {
+          localStorage.removeItem('workout');
+          this.router.navigate(['/']);
+        }, err =>{
+          console.log("error at workout")
+        }
+      )
+  }
   }
 
   sendWorkout(xp){
@@ -85,7 +82,6 @@ export class XpService {
       userId: user.id,
       XP : xp
     }
-    console.log(req)
      return this.http.post('http://localhost:4000/workouts/register', req);
   }
 
