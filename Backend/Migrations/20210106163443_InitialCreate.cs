@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApi.Migrations.SqliteMigrations
+namespace WebApi.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -12,7 +12,7 @@ namespace WebApi.Migrations.SqliteMigrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     LeaderUsername = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -30,7 +30,7 @@ namespace WebApi.Migrations.SqliteMigrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
@@ -39,7 +39,8 @@ namespace WebApi.Migrations.SqliteMigrations
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    GuildId = table.Column<int>(nullable: true)
+                    GuildId = table.Column<int>(nullable: true),
+                    TotalXP = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,14 +52,15 @@ namespace WebApi.Migrations.SqliteMigrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Country = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Date = table.Column<string>(nullable: true),
                     SerialNumber = table.Column<string>(nullable: true),
                     ProfileContact = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: true),
-                    photoLink = table.Column<string>(nullable: true)
+                    photoLink = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,7 +72,7 @@ namespace WebApi.Migrations.SqliteMigrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     userId = table.Column<int>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     XP = table.Column<int>(nullable: true)

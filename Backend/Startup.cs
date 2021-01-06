@@ -30,10 +30,10 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             // use sql server db in production and sqlite db in development
-            if (_env.IsProduction())
+            // if (_env.IsProduction())
                 services.AddDbContext<DataContext>();
-            else
-                services.AddDbContext<DataContext, SqliteDataContext>();
+            // else
+            //     services.AddDbContext<DataContext, SqliteDataContext>();
 
             services.AddCors();
             services.AddControllers();

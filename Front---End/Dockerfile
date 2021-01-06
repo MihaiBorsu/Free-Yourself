@@ -11,6 +11,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 RUN npm install mapbox-gl
+RUN npm install crypto-js --save
+RUN npm install @types/crypto-js
+RUN npm install @turf/turf
 COPY . .
 
 # Expose Port
