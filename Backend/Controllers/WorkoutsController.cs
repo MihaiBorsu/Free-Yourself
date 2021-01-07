@@ -49,9 +49,13 @@ namespace WebApi.Controllers
                 // update guild with total xp
                 // check if user has guild first
                 if (_workoutService.GetUserFromWorkout(workout).GuildId != null)
+                {
                     _workoutService.UpdateGuildWithTotalXP(workout);
+                }
                 //update user with total xp
                 _workoutService.UpdateUserWithTotalXP(workout);
+                Console.WriteLine("5");
+                 System.Diagnostics.Debug.WriteLine("5");
                 return Ok();
             }
             catch (AppException ex)

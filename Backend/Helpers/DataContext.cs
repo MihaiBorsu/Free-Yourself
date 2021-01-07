@@ -16,7 +16,7 @@ namespace WebApi.Helpers
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:freeyourselfserver.database.windows.net,1433;Initial Catalog=FreeYourselfDb;MultipleActiveResultSets=true;Persist Security Info=False;User ID=freeyourself;Password=Password1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=tcp:freeyourselfserver.database.windows.net,1433;Initial Catalog=FreeYourselfDb;Persist Security Info=False;User ID=freeyourself;Password=Password1!;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 

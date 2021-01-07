@@ -170,10 +170,13 @@ namespace WebApi.Services
         public int? GetGuildXPTotal(int guildId)
         {
             int? sum = 0;
+
             var usersInGuild = _context.Users.Where(u => u.GuildId.Equals(guildId));
             foreach (var user in usersInGuild)
             {
                 var workouts =  _context.Workouts.Where(w => w.userId.Equals(user.Id));
+                Console.WriteLine(workouts.GetType());
+                System.Diagnostics.Debug.WriteLine(workouts.GetType());
                 foreach (var workout in workouts)
                     sum += workout.XP;
             }

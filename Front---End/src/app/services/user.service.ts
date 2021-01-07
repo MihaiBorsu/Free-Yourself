@@ -60,6 +60,7 @@ export class UserService {
     let req = {
       userid: id
     }
+    console.log(req)
     return this.http.post('http://localhost:4000/workouts/dashboard', req);
   }
 

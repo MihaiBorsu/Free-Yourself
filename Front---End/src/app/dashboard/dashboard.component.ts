@@ -75,6 +75,7 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+    console.log("1");
     let user = JSON.parse(localStorage.getItem('user'));
     this.dashboard = {
       dailyXp: 0,
@@ -84,6 +85,7 @@ export class DashboardComponent implements OnInit {
     }
     this.userService.getDashboard(user.id).subscribe(
       res => {
+        console.log("2");
         this.dashboard = res
         // showNotification('top','center', 'Between Titans')
       
@@ -107,7 +109,7 @@ export class DashboardComponent implements OnInit {
            high: 200, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
        }
- 
+       console.log("3");
        var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
  
        this.startAnimationForLineChart(dailySalesChart);

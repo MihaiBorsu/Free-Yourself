@@ -1,3 +1,31 @@
+# FROM node:latest as node
+# WORKDIR /app
+# COPY . .
+
+# RUN npm install
+# RUN npm install mapbox-gl
+# RUN npm install crypto-js --save
+# RUN npm install @types/crypto-js
+# RUN npm install @turf/turf
+
+# RUN  ng build --prod
+
+# FROM nginx:alpine
+# COPY --from=node /app/dist/ /usr/share/nginx/html
+
+# # EXPOSE 4200
+
+# # CMD ["npm", "start"]
+
+
+
+
+
+
+
+
+
+
 # base image
 FROM node:12.2.0-alpine
 
@@ -14,13 +42,11 @@ RUN npm install mapbox-gl
 RUN npm install crypto-js --save
 RUN npm install @types/crypto-js
 RUN npm install @turf/turf
+RUN npm run build
 COPY . .
 
 # Expose Port
 
 EXPOSE 4200
 
-# # start app
-# CMD ["ng", "serve", "--host", "0.0.0.0"]
-# # start app
 CMD ["npm", "start"]
