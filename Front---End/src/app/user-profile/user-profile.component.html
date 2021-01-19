@@ -78,7 +78,7 @@
                         <h6 class="card-category text-gray">{{user.country}} / {{user.city}}</h6>
                         
                         <input name="description" matInput  type="text" [(ngModel)]="user.description">
-                        <button class="btn-large btn-submit" *ngIf="!updateUserProfile" (click)="setUpdateUserProfile(true)">Update Profile Picture</button>
+                        <!-- <button class="btn-large btn-submit" *ngIf="!updateUserProfile" (click)="setUpdateUserProfile(true)">Update Profile Picture</button> -->
                                 <form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)" *ngIf="updateUserProfile">
                                 
                                   <img [src]="imageUrl"  style="width:250px;height:200px">

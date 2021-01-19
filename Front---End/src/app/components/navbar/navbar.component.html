@@ -4,6 +4,12 @@
             <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
             </div>
+            <div class="navbar-toggler">
+                <button [disabled]="loading" class="btn btn-primary" (click)="logout()" >
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Logout
+                </button>
+             </div>
             <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon icon-bar"></span>

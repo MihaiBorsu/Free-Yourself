@@ -34,9 +34,8 @@ export class LoginComponent implements OnInit {
 
     let hash = this.crypt.set("123456789#@!", this.loginForm.value.password)
     this.loginForm.value.password = hash
-
     this.auth.login(this.loginForm.value).subscribe(
-      res => {
+      res => {    
         localStorage.setItem('isLogged', 'true')
         this.router.navigate(['/']);
       },

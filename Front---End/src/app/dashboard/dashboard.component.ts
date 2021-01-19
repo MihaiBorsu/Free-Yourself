@@ -190,28 +190,28 @@ export class DashboardComponent implements OnInit {
     let labels = ['S','M', 'T', 'W', 'T', 'F', 'S', 'S','M', 'T', 'W', 'T', 'F', 'S']
     let newLabels = []
     let today = new Date().getDay();
-
+ 
     for(let i=0; i<7; i++){
-      newLabels.push(labels[today])
+      newLabels.push(labels[today+1])
       today = today + 1
     }
 
-    return newLabels.reverse();
+    return newLabels;
   }
 
   getMonths(){
     let labels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
     let newLabels = []
     let month = new Date().getMonth();
+    console.log(month)
 
-    // console.log(month)
     for(let i=0; i<12; i++){
-      newLabels.push(labels[month])
+      newLabels.push(labels[month + 1])
       month = month + 1
     }
+    console.log(newLabels)
 
-    // return null
-    return newLabels.reverse();
+    return newLabels;
   }
 
 }
